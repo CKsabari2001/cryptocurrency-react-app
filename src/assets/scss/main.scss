@@ -3,4 +3,36 @@
 @tailwind components;
 @tailwind utilities;
 
+// SASS Files
+@import "./CryptoLists.scss";
+@import "./NewsLists.scss";
+@import "./CryptoDetails";
+
 // Custom Style
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.nav-link-active li {
+  background-color: #1976d2;
+}
+
+.title {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.top-10 {
+  margin-top: 2rem;
+}

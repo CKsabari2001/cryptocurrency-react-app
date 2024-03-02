@@ -1,0 +1,25 @@
+.title-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.stats {
+  ul {
+    margin-top: 3rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      max-width: 28rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.chart-select-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}

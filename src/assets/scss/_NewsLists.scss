@@ -1,0 +1,47 @@
+.cryptoNews-card {
+  max-width: 32rem;
+  height: 100%;
+
+  .card-header {
+    padding-bottom: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-header-img {
+      max-width: 100%;
+      display: flex;
+      object-fit: cover;
+    }
+  }
+
+  .card-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 14px;
+  }
+
+  .card-body {
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      padding-bottom: 1rem;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.news-select-box {
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+}
