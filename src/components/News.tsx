@@ -24,7 +24,7 @@ function News() {
       params: {
         q: cryptoSelectedName,
         sortBy: "popularity",
-        apiKey: "Test",
+        apiKey: import.meta.env.VITE_NEWS_API_KEY,
       },
     });
 

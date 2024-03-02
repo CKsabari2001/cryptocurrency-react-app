@@ -1,8 +1,7 @@
 // Import the RTK Query methods from the React-specific entry point
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BaseURL = "https://newsapi.org/v2";
-
+const BaseURL = import.meta.env.VITE_CRYPTO_NEWS_BASE_URL;
 interface createApiRequest {
   url: string;
   params?: object;
