@@ -1,0 +1,29 @@
+.crypto-card {
+  max-width: 32rem;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+    .card-header-img {
+      max-width: 30px;
+    }
+  }
+
+  .card-body {
+    margin-top: 1.5rem;
+
+    p {
+      padding-bottom: 1.2rem;
+    }
+  }
+}
+
+.coin-list-search {
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+}

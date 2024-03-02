@@ -13,14 +13,39 @@ const createApiRequest = (url: string) => ({
   headers: cryptoApiHeader,
 });
 
+interface Params {
+  params: {
+    id: string;
+    timePeriod: string;
+  };
+}
 export const cryptoApi = createApi({
   reducerPath: "cryptoApi",
   baseQuery: fetchBaseQuery({ baseUrl: BaseURL }),
   endpoints: (builder) => ({
     getCryptos: builder.query({
-      query: () => createApiRequest("/coins"),
+      query: () => createApiRequest(`/coins`),
+    }),
+    getLimitedCryptos: builder.query({
+      query: ({ limit }: { limit: number }) =>
+        createApiRequest(`/coins?limit=${limit}`),
+    }),
+    getCryptoCoin: builder.query({
+      query: ({ id }: { id: string }) => createApiRequest(`/coin/${id}`),
+    }),
+
+    getCryptoPriceHistory: builder.query({
+      query: ({ params }: Params) =>
+        createApiRequest(
+          `/coin/${params.id}/history?timePeriod=${params.timePeriod}`
+        ),
     }),
   }),
 });
 
-export const { useGetCryptosQuery } = cryptoApi;
+export const {
+  useGetCryptosQuery,
+  useGetLimitedCryptosQuery,
+  useGetCryptoCoinQuery,
+  useGetCryptoPriceHistoryQuery,
+} = cryptoApi;

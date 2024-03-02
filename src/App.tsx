@@ -5,7 +5,6 @@ import "./assets/css/main.css";
 import Home from "./components/Home.tsx";
 import CryptoCurrencies from "./components/CryptoCurrencies.tsx";
 import CryptoDetails from "./components/CryptoDetails.tsx";
-import Exchanges from "./components/Exchanges.tsx";
 import News from "./components/News.tsx";
 import Error404 from "./components/Error404.tsx";
 
@@ -28,10 +27,6 @@ const router = createBrowserRouter([
   {
     path: "/cryptocurrencies",
     element: <CryptoCurrencies />,
-  },
-  {
-    path: "/exchanges",
-    element: <Exchanges />,
   },
   {
     path: "/news",

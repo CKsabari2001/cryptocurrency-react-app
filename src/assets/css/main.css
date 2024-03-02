@@ -1,6 +1,95 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.crypto-card {
+  max-width: 32rem;
+}
+.crypto-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.crypto-card .card-header .card-header-img {
+  max-width: 30px;
+}
+.crypto-card .card-body {
+  margin-top: 1.5rem;
+}
+.crypto-card .card-body p {
+  padding-bottom: 1.2rem;
+}
+
+.coin-list-search {
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cryptoNews-card {
+  max-width: 32rem;
+  height: 100%;
+}
+.cryptoNews-card .card-header {
+  padding-bottom: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cryptoNews-card .card-header .card-header-img {
+  max-width: 100%;
+  display: flex;
+  object-fit: cover;
+}
+.cryptoNews-card .card-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 14px;
+}
+.cryptoNews-card .card-body .card-title {
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+.cryptoNews-card .card-body p {
+  padding-bottom: 1rem;
+}
+.cryptoNews-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.news-select-box {
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.title-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.stats ul {
+  margin-top: 3rem;
+}
+.stats ul li {
+  display: flex;
+  justify-content: space-between;
+  max-width: 28rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.chart-select-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -23,6 +112,10 @@ h3 {
 
 .title {
   font-family: "Roboto", sans-serif !important;
+}
+
+.top-10 {
+  margin-top: 2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

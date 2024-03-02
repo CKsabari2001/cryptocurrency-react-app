@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+// SASS Files
+@import "./CryptoLists.scss";
+@import "./NewsLists.scss";
+@import "./CryptoDetails";
+
 // Custom Style
 body {
   padding: 0;
@@ -26,4 +31,8 @@ h3 {
 
 .title {
   font-family: "Roboto", sans-serif !important;
+}
+
+.top-10 {
+  margin-top: 2rem;
 }

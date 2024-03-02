@@ -44,11 +44,6 @@ export default function SideBar() {
       path: "/cryptocurrencies",
     },
     {
-      text: "Exchanges",
-      icon: <MailIcon />,
-      path: "/exchanges",
-    },
-    {
       text: "News",
       icon: <MailIcon />,
       path: "/news",
