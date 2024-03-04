@@ -16,8 +16,8 @@ import millify from "millify";
 import ChartSelectBox from "./ChartSelectBox.tsx";
 
 // Redux
-import { useGetCryptoPriceHistoryQuery } from "../../../app/store/services/cryptoApi.ts";
-import { useAppSelector } from "../../../app/store/hooks.ts";
+import { useGetCryptoPriceHistoryQuery } from "../../../../app/store/services/cryptoApi.ts";
+import { useAppSelector } from "../../../../app/store/hooks.ts";
 
 interface Props {
   data: {

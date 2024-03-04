@@ -9,9 +9,9 @@ import { DrawerHeader } from "../styled/sideBarStyled.ts";
 import { useGetCryptoCoinQuery } from "../../app/store/services/cryptoApi.ts";
 
 // Components
-import CryptoStats from "../cryptoDetails/CryptoStats.tsx";
-import CryptoDescription from "../cryptoDetails/CryptoDescription.tsx";
-import CryptoChart from "../cryptoDetails/cryptoChart/CryptoChart.tsx";
+import CryptoStats from "./cryptoDetails/CryptoStats.tsx";
+import CryptoDescription from "./cryptoDetails/CryptoDescription.tsx";
+import CryptoChart from "./cryptoDetails/cryptoChart/CryptoChart.tsx";
 
 function CryptoDetails() {
   const isMobileScreen = useMediaQuery("(min-width: 900px)");
