@@ -39,7 +39,7 @@ function Home() {
       params: {
         q: "cryptocurrency",
         sortBy: "popularity",
-        apiKey: "Test",
+        apiKey: import.meta.env.VITE_NEWS_API_KEY,
       },
     });
   let cryptoNews = cryptoNewsData?.articles;
