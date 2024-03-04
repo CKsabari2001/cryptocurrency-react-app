@@ -5,9 +5,9 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // Redux
-import { useGetCryptosQuery } from "../app/store/services/cryptoApi.ts";
-import { useAppDispatch, useAppSelector } from "../app/store/hooks.ts";
-import { setNewsSelectValue } from "../app/store/features/newsSelect.ts";
+import { useGetCryptosQuery } from "../../../app/store/services/cryptoApi.ts";
+import { useAppDispatch, useAppSelector } from "../../../app/store/hooks.ts";
+import { setNewsSelectValue } from "../../../app/store/features/newsSelect.ts";
 
 interface Coin {
   uuid: string;

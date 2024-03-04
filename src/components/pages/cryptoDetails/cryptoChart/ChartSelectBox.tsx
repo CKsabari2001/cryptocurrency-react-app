@@ -1,5 +1,3 @@
-import React from "react";
-
 // MUI
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,8 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // Redux
-import { useAppDispatch, useAppSelector } from "../../app/store/hooks.ts";
-import { setChartSelectValue } from "../../app/store/features/chartSelect";
+import { useAppDispatch, useAppSelector } from "../../../../app/store/hooks.ts";
+import { setChartSelectValue } from "../../../../app/store/features/chartSelect.ts";
 
 // "timePeriod must be one of 1h, 3h, 12h, 24h, 7d, 30d, 3m, 1y, 3y, 5y
 

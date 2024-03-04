@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
 
 // MUI
-import SideBar from "./SideBar";
+import SideBar from "../SideBar.tsx";
 import { Box, Typography, useMediaQuery } from "@mui/material";
-import { DrawerHeader } from "./styled/sideBarStyled";
+import { DrawerHeader } from "../styled/sideBarStyled.ts";
 
 // Redux
-import { useGetCryptoCoinQuery } from "../app/store/services/cryptoApi.ts";
+import { useGetCryptoCoinQuery } from "../../app/store/services/cryptoApi.ts";
 
 // Components
-import CryptoStats from "./cryptoDetails/CryptoStats.tsx";
-import CryptoDescription from "./cryptoDetails/CryptoDescription.tsx";
-import CryptoChart from "./cryptoDetails/CryptoChart.tsx";
+import CryptoStats from "../cryptoDetails/CryptoStats.tsx";
+import CryptoDescription from "../cryptoDetails/CryptoDescription.tsx";
+import CryptoChart from "../cryptoDetails/cryptoChart/CryptoChart.tsx";
 
 function CryptoDetails() {
   const isMobileScreen = useMediaQuery("(min-width: 900px)");

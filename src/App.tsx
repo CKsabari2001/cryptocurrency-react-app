@@ -2,11 +2,11 @@
 import "./assets/css/main.css";
 
 // Pages
-import Home from "./components/Home.tsx";
-import CryptoCurrencies from "./components/CryptoCurrencies.tsx";
-import CryptoDetails from "./components/CryptoDetails.tsx";
-import News from "./components/News.tsx";
-import Error404 from "./components/Error404.tsx";
+import Home from "./components/pages/Home.tsx";
+import CryptoCurrencies from "./components/pages/CryptoCurrencies.tsx";
+import CryptoDetails from "./components/pages/CryptoDetails.tsx";
+import News from "./components/pages/News.tsx";
+import Error404 from "./components/pages/Error404.tsx";
 
 // Redux
 import { Provider } from "react-redux";

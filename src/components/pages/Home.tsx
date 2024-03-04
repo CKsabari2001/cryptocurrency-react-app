@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Import MUI
-import SideBar from "./SideBar";
+import SideBar from "../SideBar.tsx";
 import { Box, Typography, Grid, useMediaQuery, Button } from "@mui/material";
-import { DrawerHeader } from "./styled/sideBarStyled";
+import { DrawerHeader } from "../styled/sideBarStyled.ts";
 
 import millify from "millify";
 
@@ -12,13 +12,13 @@ import millify from "millify";
 import {
   useGetCryptosQuery,
   useGetLimitedCryptosQuery,
-} from "../app/store/services/cryptoApi.ts";
+} from "../../app/store/services/cryptoApi.ts";
 
-import { useGetCryptoNewsQuery } from "../app/store/services/cryptoNewsApi.ts";
+import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 
 // Components
-import CryptoLists from "./CryptoLists.tsx";
-import NewsLists from "./NewsLists.tsx";
+import CryptoLists from "./cryptoCurrencies/CryptoLists.tsx";
+import NewsLists from "./news/NewsLists.tsx";
 
 function Home() {
   // const dispatch = useAppDispatch();
