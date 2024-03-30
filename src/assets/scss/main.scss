@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 // SASS Files
+@import "./Variables.module.scss";
 @import "./CryptoLists.scss";
 @import "./NewsLists.scss";
 @import "./CryptoDetails";
@@ -16,6 +17,7 @@ body {
   font-family: "Lato", sans-serif;
   font-size: 18px;
   font-weight: 500;
+  background-color: #f5f7ff !important;
 }
 
 h1,
@@ -25,8 +27,24 @@ h3 {
   font-weight: 700;
 }
 
+.nav-link li {
+  span,
+  svg {
+    color: $text-color-tertiary;
+  }
+}
+
 .nav-link-active li {
-  background-color: #1976d2;
+  background-color: $bg-color-primary !important;
+
+  span,
+  svg {
+    color: $text-color-secondary !important;
+  }
+}
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  background-color: $text-color-secondary !important;
 }
 
 .title {
@@ -34,5 +52,23 @@ h3 {
 }
 
 .top-10 {
-  margin-top: 2rem;
+  margin-top: 4rem;
+
+  @media (min-width: 900px) {
+    margin-top: 8rem;
+  }
+}
+
+.chart-select-box {
+  #demo-simple-select {
+    color: $text-color-tertiary !important;
+    font-weight: 700 !important;
+    font-family: "Lato", sans-serif !important;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .MuiSvgIcon-root {
+    fill: $text-color-tertiary !important;
+  }
 }

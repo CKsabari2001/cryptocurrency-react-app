@@ -13,8 +13,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import HomeIcon from "@mui/icons-material/Home";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import FeedIcon from "@mui/icons-material/Feed";
 
 // Styled components for the SideBar
 import { DrawerHeader } from "./styled/sideBarStyled.ts";
@@ -25,27 +26,33 @@ import { useMediaQuery } from "@mui/material";
 
 import { NavLink } from "react-router-dom";
 
+// Scss Variables
+import variables from "../assets/scss/_Variables.module.scss";
+
 export default function SideBar() {
   const theme = useTheme();
-  const isLg = useMediaQuery(theme.breakpoints.up("lg"));
-  const [open, setOpen] = React.useState(isLg);
+  // const isLg = useMediaQuery(theme.breakpoints.up("lg"));
+  const sm = useMediaQuery("(min-width: 600px)");
+  const md = useMediaQuery("(min-width: 900px)");
+  // const lg = useMediaQuery("(min-width: 1200px)");
+  // const xl = useMediaQuery("(min-width: 1536px)");
 
-  const isMobileScreen = useMediaQuery("(min-width: 900px)");
+  const [open, setOpen] = React.useState(false);
 
   const sideBarMenus = [
     {
       text: "Home",
-      icon: <InboxIcon />,
+      icon: <HomeIcon fontSize={sm ? "large" : "medium"} />,
       path: "/",
     },
     {
       text: "Cryptocurrencies",
-      icon: <MailIcon />,
+      icon: <CurrencyExchangeIcon fontSize={sm ? "large" : "medium"} />,
       path: "/cryptocurrencies",
     },
     {
       text: "News",
-      icon: <MailIcon />,
+      icon: <FeedIcon fontSize={sm ? "large" : "medium"} />,
       path: "/news",
     },
   ];
@@ -62,7 +69,12 @@ export default function SideBar() {
     <>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar
+          sx={{
+            backgroundColor: variables.bgColorPrimary,
+            py: md ? 2 : 1,
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -73,13 +85,17 @@ export default function SideBar() {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon fontSize={sm ? "large" : "medium"} />
           </IconButton>
           <Typography
-            variant={isMobileScreen ? "h4" : "h5"}
+            variant="h1"
             component="h1"
             noWrap
             className="title"
+            sx={{
+              fontSize: md ? "44px" : "34px",
+              fontWeight: "bold",
+            }}
           >
             Cryptoverse
           </Typography>
@@ -89,9 +105,15 @@ export default function SideBar() {
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon
+                sx={{ fill: variables.textColorPrimary }}
+                fontSize={sm ? "large" : "medium"}
+              />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon
+                sx={{ fill: variables.textColorPrimary }}
+                fontSize={sm ? "large" : "medium"}
+              />
             )}
           </IconButton>
         </DrawerHeader>
@@ -101,14 +123,27 @@ export default function SideBar() {
             <NavLink
               key={obj.text}
               to={obj.path}
-              className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+              className={({ isActive }) =>
+                isActive ? "nav-link-active" : "nav-link"
+              }
             >
               <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
-                    minHeight: 48,
+                    minHeight: md ? 100 : 70,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
+                    "&:hover": {
+                      backgroundColor: variables.bgColorPrimaryFaded,
+
+                      svg: {
+                        fill: variables.textColorSecondary,
+                      },
+
+                      span: {
+                        color: variables.textColorSecondary,
+                      },
+                    },
                   }}
                 >
                   <ListItemIcon
@@ -122,7 +157,12 @@ export default function SideBar() {
                   </ListItemIcon>
                   <ListItemText
                     primary={obj.text}
-                    sx={{ opacity: open ? 1 : 0 }}
+                    sx={{
+                      opacity: open ? 1 : 0,
+                      span: {
+                        fontFamily: "'Roboto', sans-serif",
+                      },
+                    }}
                   />
                 </ListItemButton>
               </ListItem>

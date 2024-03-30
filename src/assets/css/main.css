@@ -1,15 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:export {
+  bgColorPrimary: #4b49ac;
+  bgColorPrimaryFaded: rgba(75, 73, 172, 0.1725490196);
+  bgColorSecondary: #98bdff;
+  textColorPrimary: #252525;
+  textColorSecondary: #fff;
+  textColorTertiary: #7d8492;
+}
+
 .crypto-card {
   max-width: 32rem;
+  border-radius: 20px !important;
+  border-color: rgba(75, 73, 172, 0.1725490196) !important;
 }
 .crypto-card .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1.4rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.crypto-card .card-header h6 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4b49ac;
+}
+@media (min-width: 900px) {
+  .crypto-card .card-header h6 {
+    font-size: 18px;
+  }
 }
 .crypto-card .card-header .card-header-img {
   max-width: 30px;
@@ -19,12 +39,45 @@
 }
 .crypto-card .card-body p {
   padding-bottom: 1.2rem;
+  color: #7d8492;
+  font-weight: 500;
+  font-size: 14px;
+}
+@media (min-width: 900px) {
+  .crypto-card .card-body p {
+    font-size: 16px;
+  }
+}
+.crypto-card .card-body p span {
+  color: #4b49ac;
+  font-weight: 700;
+  padding-left: 5px;
 }
 
 .coin-list-search {
   margin-bottom: 5rem;
   display: flex;
   justify-content: center;
+}
+
+a .crypto-card {
+  transition: all 0.5s ease-in-out;
+}
+a .crypto-card h6,
+a .crypto-card p,
+a .crypto-card p span {
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover .crypto-card {
+  background-color: #4b49ac;
+  transition: all 0.5s ease-in-out;
+}
+a:hover .crypto-card h6,
+a:hover .crypto-card p,
+a:hover .crypto-card p span {
+  color: #fff;
+  transition: all 0.5s ease-in-out;
 }
 
 .cryptoNews-card {
@@ -78,7 +131,6 @@
 .stats ul li {
   display: flex;
   justify-content: space-between;
-  max-width: 28rem;
   margin-bottom: 2rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -86,7 +138,7 @@
 
 .chart-select-box {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   margin-bottom: 2rem;
 }
 
@@ -97,6 +149,7 @@ body {
   font-family: "Lato", sans-serif;
   font-size: 18px;
   font-weight: 500;
+  background-color: #f5f7ff !important;
 }
 
 h1,
@@ -106,8 +159,21 @@ h3 {
   font-weight: 700;
 }
 
+.nav-link li span,
+.nav-link li svg {
+  color: #7d8492;
+}
+
 .nav-link-active li {
-  background-color: #1976d2;
+  background-color: #4b49ac !important;
+}
+.nav-link-active li span,
+.nav-link-active li svg {
+  color: #fff !important;
+}
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  background-color: #fff !important;
 }
 
 .title {
@@ -115,7 +181,23 @@ h3 {
 }
 
 .top-10 {
-  margin-top: 2rem;
+  margin-top: 4rem;
+}
+@media (min-width: 900px) {
+  .top-10 {
+    margin-top: 8rem;
+  }
+}
+
+.chart-select-box #demo-simple-select {
+  color: #7d8492 !important;
+  font-weight: 700 !important;
+  font-family: "Lato", sans-serif !important;
+  font-size: 16px;
+  padding: 15px;
+}
+.chart-select-box .MuiSvgIcon-root {
+  fill: #7d8492 !important;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -11,6 +11,9 @@ import { setChartSelectValue } from "../../../../app/store/features/chartSelect.
 
 // "timePeriod must be one of 1h, 3h, 12h, 24h, 7d, 30d, 3m, 1y, 3y, 5y
 
+// Scss Variables
+import variables from "../../../../assets/scss/_Variables.module.scss";
+
 function ChartSelectBox() {
   const dispatch = useAppDispatch();
   const value = useAppSelector((state) => state.chartSelect.value);
@@ -18,17 +21,32 @@ function ChartSelectBox() {
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setChartSelectValue(event.target.value as string));
   };
+
   return (
     <>
       <Box className="chart-select-box">
-        <FormControl sx={{ width: "100%", maxWidth: "400px" }}>
-          <InputLabel id="demo-simple-select-label">Time Frame</InputLabel>
+        <FormControl sx={{ width: "100%", maxWidth: "300px" }}>
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              color: `${variables.bgColorPrimary} !important`,
+              fontSize: "14px",
+            }}
+          >
+            Time Frame
+          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={value}
             label="Time Frame"
             onChange={handleChange}
+            sx={{
+              fieldset: {
+                borderColor: `${variables.bgColorPrimary} !important`,
+                borderRadius: "15px!important",
+              },
+            }}
           >
             <MenuItem value={"1h"}>1h</MenuItem>
             <MenuItem value={"3h"}>3h</MenuItem>

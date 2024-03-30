@@ -1,0 +1,15 @@
+$bg-color-primary: #4b49ac;
+$bg-color-primary-faded: #4b49ac2c;
+$bg-color-secondary: #98bdff;
+$text-color-primary: #252525;
+$text-color-secondary: #fff;
+$text-color-tertiary: #7d8492;
+
+:export {
+  bgColorPrimary: $bg-color-primary;
+  bgColorPrimaryFaded: $bg-color-primary-faded;
+  bgColorSecondary: $bg-color-secondary;
+  textColorPrimary: $text-color-primary;
+  textColorSecondary: $text-color-secondary;
+  textColorTertiary: $text-color-tertiary;
+}

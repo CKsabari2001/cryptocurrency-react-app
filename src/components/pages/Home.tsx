@@ -1,28 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import millify from "millify";
 // Import MUI
 import SideBar from "../SideBar.tsx";
-import { Box, Typography, Grid, useMediaQuery, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  useMediaQuery,
+  Button,
+  Skeleton,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
-
-import millify from "millify";
-
 // // Redux
 import {
   useGetCryptosQuery,
   useGetLimitedCryptosQuery,
 } from "../../app/store/services/cryptoApi.ts";
-
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
-
+// Scss Variables
+import variables from "../../assets/scss/_Variables.module.scss";
 // Components
 import CryptoLists from "./cryptoCurrencies/CryptoLists.tsx";
 import NewsLists from "./news/NewsLists.tsx";
 
 function Home() {
   // const dispatch = useAppDispatch();
-  const isMobileScreen = useMediaQuery("(min-width: 900px)");
+  // const isMobileScreen = useMediaQuery("(min-width: 900px)");
+
+  const sm = useMediaQuery("(min-width: 600px)");
+  const md = useMediaQuery("(min-width: 900px)");
+  // const lg = useMediaQuery("(min-width: 1200px)");
+  // const xl = useMediaQuery("(min-width: 1536px)");
 
   const { data: globalStatsData, isFetching: globalStatsDataIsFetching } =
     useGetCryptosQuery({});
@@ -45,127 +56,251 @@ function Home() {
   let cryptoNews = cryptoNewsData?.articles;
   cryptoNews = cryptoNews?.slice(0, 10);
 
-  const dataIsFetching =
-    globalStatsDataIsFetching ||
-    limitedCryptosDataIsFetching ||
-    cryptoNewsDataIsFetching;
+  // Const Styled Components
+  const cH1 = {
+    fontSize: md ? "38px" : "28px",
+    fontWeight: 700,
+    color: variables.textColorPrimary,
+  };
+  const cH6 = {
+    fontSize: md ? "18px" : "16px",
+    fontWeight: 500,
+    color: variables.textColorTertiary,
+  };
+  const cP = {
+    fontSize: md ? "24px" : "22px",
+    fontWeight: 800,
+    color: variables.bgColorPrimary,
+    fontFamily: "'Roboto', sans-serif",
+  };
 
+  const cVButton = {
+    fontSize: md ? "18px" : "16px",
+    fontWeight: 500,
+    color: variables.bgColorPrimary,
+    fontFamily: "'Roboto', sans-serif",
+    textTransform: "capitalize",
+    padding: "10px 30px",
+
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: variables.bgColorPrimaryFaded,
+    },
+  };
+
+  const globalCryptoStats = [
+    {
+      name: "Total Cryptocurrencies",
+      stats: globalStats?.total,
+    },
+    {
+      name: "Total Exchanges",
+      stats: globalStats?.totalExchanges,
+    },
+    {
+      name: "Total Market Cap",
+      stats: globalStats?.totalMarketCap,
+    },
+    {
+      name: "Total 24h Volume",
+      stats: globalStats?.total24hVolume,
+    },
+    {
+      name: "Total Markets",
+      stats: globalStats?.totalMarkets,
+    },
+  ];
   return (
     <React.Fragment>
       <Box sx={{ display: "flex" }}>
         <SideBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
           <DrawerHeader />
-          {dataIsFetching ? (
-            <h2>Loading...</h2>
-          ) : (
-            <>
-              <div className="global-stats">
-                <Typography
-                  variant={isMobileScreen ? "h4" : "h5"}
-                  component="h2"
-                  gutterBottom
+          <div className={sm ? "text-left" : "text-center"}>
+            {globalStatsDataIsFetching ? (
+              <Skeleton variant="text" sx={{ fontSize: cH1.fontSize }} />
+            ) : (
+              <Typography
+                variant="h2"
+                component="h2"
+                gutterBottom
+                sx={{ ...cH1, mb: md ? 5 : 3 }}
+              >
+                Global Crypto Stats
+              </Typography>
+            )}
+
+            <Card
+              className="crypto-card"
+              variant="outlined"
+              sx={{
+                maxWidth: "50rem",
+              }}
+            >
+              <CardContent
+                sx={{
+                  padding: md ? "50px !important" : "30px!important",
+                }}
+              >
+                <Grid
+                  container
+                  rowSpacing={{ xs: 3, md: 5 }}
+                  columnSpacing={{ xs: 1, md: 3 }}
                 >
-                  Global Crypto Stats
-                </Typography>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, md: 3 }}>
-                  <Grid item xs={12} sm={6}>
-                    <Typography
-                      variant={isMobileScreen ? "body1" : "body2"}
-                      component="h6"
-                    >
-                      Total Cryptocurrencies
-                    </Typography>
-                    <Typography variant="h6" component="p">
-                      {millify(globalStats.total)}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Typography
-                      variant={isMobileScreen ? "body1" : "body2"}
-                      component="h6"
-                    >
-                      Total Exchanges
-                    </Typography>
-                    <Typography variant="h6" component="p">
-                      {millify(globalStats.totalExchanges)}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Typography
-                      variant={isMobileScreen ? "body1" : "body2"}
-                      component="h6"
-                    >
-                      Total Market Cap
-                    </Typography>
-                    <Typography variant="h6" component="p">
-                      {millify(globalStats.totalMarketCap)}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Typography
-                      variant={isMobileScreen ? "body1" : "body2"}
-                      component="h6"
-                    >
-                      Total 24h Volume
-                    </Typography>
-                    <Typography variant="h6" component="p">
-                      {millify(globalStats.total24hVolume)}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Typography
-                      variant={isMobileScreen ? "body1" : "body2"}
-                      component="h6"
-                    >
-                      Total Markets
-                    </Typography>
-                    <Typography variant="h6" component="p">
-                      {millify(globalStats.totalMarkets)}
-                    </Typography>
-                  </Grid>
+                  {globalCryptoStats.map((obj, i) => (
+                    <Grid key={i} item xs={12} sm={6}>
+                      {globalStatsDataIsFetching ? (
+                        <Skeleton
+                          variant="text"
+                          sx={{ fontSize: cH6.fontSize, maxWidth: "300px" }}
+                        />
+                      ) : (
+                        <Typography
+                          variant="h5"
+                          component="h6"
+                          sx={{ ...cH6, mb: md ? 2 : 1 }}
+                        >
+                          {obj.name}
+                        </Typography>
+                      )}
+
+                      {globalStatsDataIsFetching ? (
+                        <Skeleton
+                          variant="text"
+                          sx={{ fontSize: cP.fontSize, maxWidth: "300px" }}
+                        />
+                      ) : (
+                        <Typography variant="body1" component="p" sx={cP}>
+                          {millify(obj.stats)}
+                        </Typography>
+                      )}
+                    </Grid>
+                  ))}
                 </Grid>
-              </div>
-              <div className="top-10">
-                <Grid container spacing={2} justifyContent="space-between">
-                  <Grid item>
-                    <Typography
-                      variant={isMobileScreen ? "h4" : "h5"}
-                      component="h2"
-                      gutterBottom
-                    >
-                      Top 10 Cryptos in the World
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Link to={"/CryptoCurrencies"}>
-                      <Button variant="text">View More</Button>
-                    </Link>
-                  </Grid>
-                </Grid>
-                <CryptoLists data={cryptoCoins} hideSearch />
-              </div>
-              <div className="top-10">
-                <Grid container spacing={2} justifyContent="space-between">
-                  <Grid item>
-                    <Typography
-                      variant={isMobileScreen ? "h4" : "h5"}
-                      component="h2"
-                      gutterBottom
-                    >
-                      Top 10 Crypto News in the World
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Link to={"/news"}>
-                      <Button variant="text">View More</Button>
-                    </Link>
-                  </Grid>
-                </Grid>
-                <NewsLists data={cryptoNews} />
-              </div>
-            </>
-          )}
+              </CardContent>
+            </Card>
+          </div>
+          <div className="top-10">
+            <Grid
+              container
+              rowSpacing={2}
+              direction={sm ? "row" : "column"}
+              justifyContent={sm ? "space-between" : "center"}
+              alignItems={"center"}
+              sx={{
+                mb: md ? 5 : 3,
+              }}
+            >
+              <Grid item>
+                {limitedCryptosDataIsFetching ? (
+                  <Skeleton
+                    variant="text"
+                    sx={{
+                      fontSize: cH1.fontSize,
+                      width: "100px",
+                      minWidth: "200px",
+                      maxWidth: "400px",
+                    }}
+                  />
+                ) : (
+                  <Typography
+                    variant="h2"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                      ...cH1,
+                      textAlign: sm ? "left" : "center",
+                    }}
+                  >
+                    Top 10 Cryptos in the World
+                  </Typography>
+                )}
+              </Grid>
+              <Grid item>
+                {limitedCryptosDataIsFetching ? (
+                  <Skeleton
+                    variant="text"
+                    sx={{
+                      fontSize: cVButton.fontSize,
+                      width: "100px",
+                      minWidth: "50px",
+                      maxWidth: "100px",
+                    }}
+                  />
+                ) : (
+                  <Link to={"/CryptoCurrencies"}>
+                    <Button variant="text" sx={cVButton}>
+                      View More
+                    </Button>
+                  </Link>
+                )}
+              </Grid>
+            </Grid>
+            <CryptoLists
+              data={cryptoCoins}
+              isFetcing={limitedCryptosDataIsFetching}
+              hideSearch
+            />
+          </div>
+          <div className="top-10">
+            <Grid
+              container
+              rowSpacing={2}
+              direction={sm ? "row" : "column"}
+              justifyContent={sm ? "space-between" : "center"}
+              alignItems={"center"}
+              sx={{
+                mb: md ? 5 : 3,
+              }}
+            >
+              <Grid item>
+                {cryptoNewsDataIsFetching ? (
+                  <Skeleton
+                    variant="text"
+                    sx={{
+                      fontSize: cH1.fontSize,
+                      width: "100px",
+                      minWidth: "200px",
+                      maxWidth: "400px",
+                    }}
+                  />
+                ) : (
+                  <Typography
+                    variant="h2"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                      ...cH1,
+
+                      textAlign: sm ? "left" : "center",
+                    }}
+                  >
+                    Top 10 Crypto News in the World
+                  </Typography>
+                )}
+              </Grid>
+              <Grid item>
+                {cryptoNewsDataIsFetching ? (
+                  <Skeleton
+                    variant="text"
+                    sx={{
+                      fontSize: cVButton.fontSize,
+                      width: "100px",
+                      minWidth: "50px",
+                      maxWidth: "100px",
+                    }}
+                  />
+                ) : (
+                  <Link to={"/news"}>
+                    <Button variant="text" sx={cVButton}>
+                      View More
+                    </Button>
+                  </Link>
+                )}
+              </Grid>
+            </Grid>
+            <NewsLists data={cryptoNews} />
+          </div>
         </Box>
       </Box>
     </React.Fragment>

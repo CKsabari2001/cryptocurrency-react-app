@@ -20,11 +20,7 @@ function CryptoCurrencies() {
         <SideBar />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          {cryptoDataIsFetching ? (
-            <h1>Loading...</h1>
-          ) : (
-            <CryptoLists data={cryptoCoins} />
-          )}
+          <CryptoLists data={cryptoCoins} isFetcing={cryptoDataIsFetching} />
         </Box>
       </Box>
     </>

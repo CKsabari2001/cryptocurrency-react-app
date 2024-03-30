@@ -9,11 +9,20 @@ import {
   Legend,
   Tooltip,
 } from "chart.js";
-import { Typography, useMediaQuery } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Skeleton,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import millify from "millify";
 
 // Components
 import ChartSelectBox from "./ChartSelectBox.tsx";
+
+// Scss Variables
+import variables from "../../../../assets/scss/_Variables.module.scss";
 
 // Redux
 import { useGetCryptoPriceHistoryQuery } from "../../../../app/store/services/cryptoApi.ts";
@@ -31,11 +40,12 @@ interface Props {
 const CryptoChart = ({ data }: Props) => {
   const chartTimePeriod = useAppSelector((state) => state.chartSelect.value);
   const isMobileScreen = useMediaQuery("(min-width: 900px)");
+  const md = useMediaQuery("(min-width: 900px)");
 
   const { data: priceHistory, isFetching: priceHistoryIsFetching } =
     useGetCryptoPriceHistoryQuery({
       params: {
-        id: data.uuid,
+        id: data?.uuid,
         timePeriod: chartTimePeriod == "" ? "1y" : chartTimePeriod,
       },
     });
@@ -51,8 +61,87 @@ const CryptoChart = ({ data }: Props) => {
     );
   }
 
+  // Const Styled Components
+  const cH2 = {
+    fontFamily: " 'Roboto', sans-serif",
+    fontSize: md ? "34px" : "24px",
+    fontWeight: 700,
+    color: variables.textColorPrimary,
+    marginBottom: md ? "0" : "10px",
+  };
+  const cH6 = {
+    fontFamily: "'Lato', sans-serif",
+    fontSize: md ? "18px" : "16px",
+    fontWeight: 500,
+    color: variables.textColorTertiary,
+    padding: md ? "0" : "0 10px",
+    paddingLeft: md ? "30px" : "0",
+    marginBottom: "0",
+
+    span: {
+      color: variables.bgColorPrimary,
+      fontWeight: "800 !important",
+    },
+  };
+
   if (priceHistoryIsFetching) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <Card
+          className="crypto-card"
+          variant="outlined"
+          sx={{
+            width: "100%",
+            maxWidth: "100%",
+          }}
+        >
+          <CardContent
+            sx={{
+              padding: md ? "50px !important" : "30px!important",
+            }}
+          >
+            {" "}
+            <Skeleton
+              variant="rounded"
+              sx={{
+                width: "100%",
+                maxWidth: md ? "300px" : "100%",
+                height: md ? "40px" : "30px",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: md ? "row" : "column",
+                justifyContent: "space-between",
+                marginBottom: "20px",
+              }}
+            >
+              <Skeleton
+                variant="text"
+                sx={{
+                  fontSize: cH2.fontSize,
+                  width: "100%",
+                  maxWidth: "600px",
+                }}
+              />
+              <Skeleton
+                variant="text"
+                sx={{
+                  fontSize: cH6.fontSize,
+                  width: "100%",
+                  maxWidth: "400px",
+                }}
+              />
+            </div>
+            <Skeleton
+              variant="rounded"
+              sx={{ width: "100%", height: md ? "500px" : "300px" }}
+            />
+          </CardContent>
+        </Card>
+      </>
+    );
   }
 
   ChartJS.register(
@@ -70,8 +159,8 @@ const CryptoChart = ({ data }: Props) => {
       {
         label: "Price in USD",
         data: coinPriceHistory,
-        borderColor: "#1971D2",
-        backgroundColor: "#1976D2",
+        borderColor: variables.bgColorPrimary,
+        backgroundColor: variables.bgColorPrimary,
       },
     ],
   };
@@ -79,7 +168,7 @@ const CryptoChart = ({ data }: Props) => {
   const chartOption = {
     responsive: true,
     layout: {
-      padding: 20,
+      padding: 0,
     },
     scales: {
       y: {
@@ -101,35 +190,75 @@ const CryptoChart = ({ data }: Props) => {
       },
     },
   };
+
   return (
     <>
-      <div className="chart-header">
-        <ChartSelectBox />
-        <Typography
-          variant={isMobileScreen ? "h4" : "h5"}
-          component="h2"
-          gutterBottom
+      <Card
+        className="crypto-card"
+        variant="outlined"
+        sx={{
+          width: "100%",
+          maxWidth: "100%",
+        }}
+      >
+        <CardContent
+          sx={{
+            padding: md ? "50px !important" : "30px!important",
+          }}
         >
-          {data.name} Price Chart
-        </Typography>
-        <div>
-          <Typography
-            variant={isMobileScreen ? "h4" : "h5"}
-            component="h2"
-            gutterBottom
+          <div
+            className="chart-header"
+            style={{
+              marginBottom: md ? "2rem" : "1rem",
+            }}
           >
-            {data.change} %
-          </Typography>
-          <Typography
-            variant={isMobileScreen ? "h4" : "h5"}
-            component="h2"
-            gutterBottom
-          >
-            Current {data.name} Price: $ {millify(data.price)}
-          </Typography>
-        </div>
-      </div>
-      <Line data={chartData} options={chartOption} />
+            <ChartSelectBox />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: md ? "row" : "column",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant={isMobileScreen ? "h4" : "h5"}
+                component="h2"
+                sx={cH2}
+              >
+                {data.name} Price Chart
+              </Typography>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  variant={isMobileScreen ? "h4" : "h5"}
+                  component="h3"
+                  gutterBottom
+                  sx={cH6}
+                >
+                  Current {data.name} Change: <span>({data.change} %)</span>
+                </Typography>
+                <Typography
+                  variant={isMobileScreen ? "h4" : "h5"}
+                  component="h3"
+                  gutterBottom
+                  sx={cH6}
+                >
+                  Current {data.name} Price:{" "}
+                  <span>$ {millify(data.price)}</span>
+                </Typography>
+              </div>
+            </div>
+          </div>
+          <Line data={chartData} options={chartOption} />
+        </CardContent>
+      </Card>
     </>
   );
 };

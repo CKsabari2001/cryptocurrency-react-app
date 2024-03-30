@@ -10,7 +10,6 @@
     li {
       display: flex;
       justify-content: space-between;
-      max-width: 28rem;
       margin-bottom: 2rem;
       padding-bottom: 0.8rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -20,6 +19,6 @@
 
 .chart-select-box {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   margin-bottom: 2rem;
 }

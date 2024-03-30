@@ -36,6 +36,14 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
+
+  minHeight: "54px",
+  "@media (min-width: 600px)": {
+    minHeight: "64px",
+  },
+  "@media (min-width: 900px)": {
+    minHeight: "83px",
+  },
 }));
 
 export const AppBar = styled(MuiAppBar, {

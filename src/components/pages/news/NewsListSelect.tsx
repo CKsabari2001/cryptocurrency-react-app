@@ -46,7 +46,7 @@ function NewsListSelect() {
                 },
               }}
             >
-              {cryptos.map((coin: Coin) => (
+              {cryptos?.map((coin: Coin) => (
                 <MenuItem value={coin.name} key={coin.uuid}>
                   {coin.name}
                 </MenuItem>
