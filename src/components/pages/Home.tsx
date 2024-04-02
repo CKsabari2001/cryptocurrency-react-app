@@ -299,7 +299,7 @@ function Home() {
                 )}
               </Grid>
             </Grid>
-            <NewsLists data={cryptoNews} />
+            <NewsLists data={cryptoNews} isFetcing={cryptoNewsDataIsFetching} />
           </div>
         </Box>
       </Box>

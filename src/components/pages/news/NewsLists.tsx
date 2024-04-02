@@ -24,9 +24,10 @@ interface News {
 interface Props {
   data?: News[];
   hideSearch?: boolean;
+  isFetcing?: boolean;
 }
 
-function NewsLists({ data }: Props) {
+function NewsLists({ data, isFetcing }: Props) {
   const isMobileScreen = useMediaQuery("(min-width: 900px)");
 
   const [NewsList, setNewsList] = useState(data);
@@ -34,6 +35,10 @@ function NewsLists({ data }: Props) {
   useEffect(() => {
     setNewsList(data);
   }, [data]);
+
+  if (isFetcing) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <React.Fragment>

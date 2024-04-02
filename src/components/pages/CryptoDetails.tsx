@@ -27,6 +27,8 @@ function CryptoDetails() {
     });
   const coin = coinData?.data?.coin;
 
+  console.log(coinDataIsFetching);
+
   // Const Styled Components
   const cH1 = {
     fontFamily: " 'Roboto', sans-serif",
@@ -85,7 +87,7 @@ function CryptoDetails() {
               </>
             )}
           </div>
-          <CryptoChart data={coin} />
+          <CryptoChart data={coin} isFetching={coinDataIsFetching} />
           <CryptoStats data={coin} isFetching={coinDataIsFetching} />
           <CryptoDescription data={coin} isFetching={coinDataIsFetching} />
         </Box>

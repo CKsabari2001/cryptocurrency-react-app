@@ -36,8 +36,9 @@ interface Props {
     price: number;
     change: number;
   };
+  isFetching: boolean;
 }
-const CryptoChart = ({ data }: Props) => {
+const CryptoChart = ({ data, isFetching }: Props) => {
   const chartTimePeriod = useAppSelector((state) => state.chartSelect.value);
   const isMobileScreen = useMediaQuery("(min-width: 900px)");
   const md = useMediaQuery("(min-width: 900px)");
@@ -49,9 +50,9 @@ const CryptoChart = ({ data }: Props) => {
         timePeriod: chartTimePeriod == "" ? "1y" : chartTimePeriod,
       },
     });
+
   const coinPriceHistory = [];
   const coinTimeStamp = [];
-
   for (let i = 0; i < priceHistory?.data?.history?.length; i++) {
     coinPriceHistory.push(priceHistory.data.history[i].price);
     coinTimeStamp.push(
@@ -84,7 +85,7 @@ const CryptoChart = ({ data }: Props) => {
     },
   };
 
-  if (priceHistoryIsFetching) {
+  if (priceHistoryIsFetching || isFetching) {
     return (
       <>
         <Card
