@@ -124,7 +124,7 @@ function CryptoLists({ data, isFetcing, hideSearch }: Props) {
           <>
             {coinList?.map((coin: Coin) => (
               <Grid item key={coin.uuid} xs={12} sm={6} md={4} lg={3}>
-                <Link to={`/coins/${coin.uuid}`}>
+                <Link to={`/cryptocurrencies/coins/${coin.uuid}`}>
                   <Card
                     className="crypto-card"
                     variant="outlined"

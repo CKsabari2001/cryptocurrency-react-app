@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <News />,
   },
   {
-    path: "/coins/:coinId",
+    path: "/cryptocurrencies/coins/:coinId",
     element: <CryptoDetails />,
   },
 ]);
