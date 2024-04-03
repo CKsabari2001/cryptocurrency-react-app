@@ -82,6 +82,14 @@ a:hover .crypto-card p span {
 
 .cryptoNews-card {
   max-width: 32rem;
+  height: 100%;
+  border-radius: 25px !important;
+  border-color: rgba(75, 73, 172, 0.1725490196) !important;
+  transition: all 0.5s ease-in-out;
+}
+.cryptoNews-card:hover {
+  border-color: #4b49ac !important;
+  transition: all 0.5s ease-in-out;
 }
 .cryptoNews-card .card-header {
   padding-bottom: 1.4rem;
@@ -90,9 +98,20 @@ a:hover .crypto-card p span {
   align-items: center;
 }
 .cryptoNews-card .card-header .card-header-img {
+  width: 100%;
   max-width: 100%;
   display: flex;
   object-fit: cover;
+  min-height: 200px;
+  max-height: 200px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+@media (min-width: 1400px) {
+  .cryptoNews-card .card-header .card-header-img {
+    min-height: 250px;
+    max-height: 250px;
+  }
 }
 .cryptoNews-card .card-content-container {
   display: flex;
@@ -117,6 +136,18 @@ a:hover .crypto-card p span {
   margin-bottom: 5rem;
   display: flex;
   justify-content: center;
+}
+
+.news-select-box #demo-simple-select {
+  color: #7d8492 !important;
+  font-weight: 700 !important;
+  font-family: "Lato", sans-serif !important;
+  font-size: 16px;
+  padding: 15px;
+}
+
+.cryptoNews-card.loader:hover {
+  border-color: rgba(75, 73, 172, 0.1725490196) !important;
 }
 
 .title-section {

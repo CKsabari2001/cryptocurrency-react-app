@@ -9,18 +9,13 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppDispatch, useAppSelector } from "../../../app/store/hooks.ts";
 import { setNewsSelectValue } from "../../../app/store/features/newsSelect.ts";
 
-// interface Coin {
-//   uuid: string;
-//   name: string;
-// }
+// Scss Variables
+import variables from "../../../assets/scss/_Variables.module.scss";
+import { Skeleton } from "@mui/material";
 
 function NewsListSelect({ isFetching }: { isFetching: boolean }) {
   const dispatch = useAppDispatch();
   const cryptoName = useAppSelector((state) => state.newsSelect.value);
-
-  // const { data: cryptoData, isFetching: cryptoDataIsFetching } =
-  //   useGetCryptosQuery({});
-  // const cryptos = cryptoData?.data?.coins;
 
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setNewsSelectValue(event.target.value as string));
@@ -35,37 +30,64 @@ function NewsListSelect({ isFetching }: { isFetching: boolean }) {
     { value: "/theguardian", name: "The Guardian" },
   ];
 
+  if (isFetching) {
+    return (
+      <>
+        <Box className="news-select-box">
+          <Skeleton
+            variant="rounded"
+            width={"100%"}
+            height={"50px"}
+            sx={{
+              maxWidth: "400px",
+            }}
+          />
+        </Box>
+      </>
+    );
+  }
+
   return (
     <>
-      {!isFetching && (
-        <Box className="news-select-box">
-          <FormControl sx={{ width: "100%", maxWidth: "400px" }}>
-            <InputLabel id="demo-simple-select-label">
-              Select The Source
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={cryptoName}
-              label="Select The Source"
-              onChange={handleChange}
-              MenuProps={{
-                PaperProps: {
-                  style: {
-                    maxHeight: "400px",
-                  },
+      <Box className="news-select-box">
+        <FormControl sx={{ width: "100%", maxWidth: "400px" }}>
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              color: `${variables.bgColorPrimary} !important`,
+              fontSize: "14px",
+            }}
+          >
+            Select The Source
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={cryptoName}
+            label="Select The Source"
+            onChange={handleChange}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: "400px",
                 },
-              }}
-            >
-              {selectBoxArr?.map((obj, i) => (
-                <MenuItem value={obj.value} key={i}>
-                  {obj.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-      )}
+              },
+            }}
+            sx={{
+              fieldset: {
+                borderColor: `${variables.bgColorPrimary} !important`,
+                borderRadius: "15px!important",
+              },
+            }}
+          >
+            {selectBoxArr?.map((obj, i) => (
+              <MenuItem value={obj.value} key={i}>
+                {obj.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
     </>
   );
 }

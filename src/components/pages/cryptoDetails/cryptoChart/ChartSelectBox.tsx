@@ -41,6 +41,13 @@ function ChartSelectBox() {
             value={value}
             label="Time Frame"
             onChange={handleChange}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: "300px",
+                },
+              },
+            }}
             sx={{
               fieldset: {
                 borderColor: `${variables.bgColorPrimary} !important`,

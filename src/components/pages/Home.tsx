@@ -3,22 +3,10 @@ import { Link } from "react-router-dom";
 import millify from "millify";
 // Import MUI
 import SideBar from "../SideBar.tsx";
-import {
-  Box,
-  Typography,
-  Grid,
-  useMediaQuery,
-  Button,
-  Skeleton,
-  Card,
-  CardContent,
-} from "@mui/material";
+import { Box, Typography, Grid, useMediaQuery, Button, Skeleton, Card, CardContent } from "@mui/material";
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
 // // Redux
-import {
-  useGetCryptosQuery,
-  useGetLimitedCryptosQuery,
-} from "../../app/store/services/cryptoApi.ts";
+import { useGetCryptosQuery, useGetLimitedCryptosQuery } from "../../app/store/services/cryptoApi.ts";
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 // Scss Variables
 import variables from "../../assets/scss/_Variables.module.scss";
@@ -35,22 +23,19 @@ function Home() {
   // const lg = useMediaQuery("(min-width: 1200px)");
   // const xl = useMediaQuery("(min-width: 1536px)");
 
-  const { data: globalStatsData, isFetching: globalStatsDataIsFetching } =
-    useGetCryptosQuery({});
+  const { data: globalStatsData, isFetching: globalStatsDataIsFetching } = useGetCryptosQuery({});
   const globalStats = globalStatsData?.data?.stats;
 
-  const { data: limitedCryptosData, isFetching: limitedCryptosDataIsFetching } =
-    useGetLimitedCryptosQuery({
-      limit: 10,
-    });
+  const { data: limitedCryptosData, isFetching: limitedCryptosDataIsFetching } = useGetLimitedCryptosQuery({
+    limit: 10,
+  });
   const cryptoCoins = limitedCryptosData?.data?.coins;
 
-  const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } =
-    useGetCryptoNewsQuery({
-      params: {
-        source: "/bitcoinist",
-      },
-    });
+  const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } = useGetCryptoNewsQuery({
+    params: {
+      source: "/bitcoinist",
+    },
+  });
   let cryptoNews = cryptoNewsData?.data;
   cryptoNews = cryptoNews?.slice(0, 10);
 
@@ -118,12 +103,7 @@ function Home() {
             {globalStatsDataIsFetching ? (
               <Skeleton variant="text" sx={{ fontSize: cH1.fontSize }} />
             ) : (
-              <Typography
-                variant="h2"
-                component="h2"
-                gutterBottom
-                sx={{ ...cH1, mb: md ? 5 : 3 }}
-              >
+              <Typography variant="h2" component="h2" gutterBottom sx={{ ...cH1, mb: md ? 5 : 3 }}>
                 Global Crypto Stats
               </Typography>
             )}
@@ -133,40 +113,24 @@ function Home() {
               variant="outlined"
               sx={{
                 maxWidth: "50rem",
-              }}
-            >
+              }}>
               <CardContent
                 sx={{
                   padding: md ? "50px !important" : "30px!important",
-                }}
-              >
-                <Grid
-                  container
-                  rowSpacing={{ xs: 3, md: 5 }}
-                  columnSpacing={{ xs: 1, md: 3 }}
-                >
+                }}>
+                <Grid container rowSpacing={{ xs: 3, md: 5 }} columnSpacing={{ xs: 1, md: 3 }}>
                   {globalCryptoStats.map((obj, i) => (
                     <Grid key={i} item xs={12} sm={6}>
                       {globalStatsDataIsFetching ? (
-                        <Skeleton
-                          variant="text"
-                          sx={{ fontSize: cH6.fontSize, maxWidth: "300px" }}
-                        />
+                        <Skeleton variant="text" sx={{ fontSize: cH6.fontSize, maxWidth: "300px" }} />
                       ) : (
-                        <Typography
-                          variant="h5"
-                          component="h6"
-                          sx={{ ...cH6, mb: md ? 2 : 1 }}
-                        >
+                        <Typography variant="h5" component="h6" sx={{ ...cH6, mb: md ? 2 : 1 }}>
                           {obj.name}
                         </Typography>
                       )}
 
                       {globalStatsDataIsFetching ? (
-                        <Skeleton
-                          variant="text"
-                          sx={{ fontSize: cP.fontSize, maxWidth: "300px" }}
-                        />
+                        <Skeleton variant="text" sx={{ fontSize: cP.fontSize, maxWidth: "300px" }} />
                       ) : (
                         <Typography variant="body1" component="p" sx={cP}>
                           {millify(obj.stats)}
@@ -187,8 +151,7 @@ function Home() {
               alignItems={"center"}
               sx={{
                 mb: md ? 5 : 3,
-              }}
-            >
+              }}>
               <Grid item>
                 {limitedCryptosDataIsFetching ? (
                   <Skeleton
@@ -208,8 +171,7 @@ function Home() {
                     sx={{
                       ...cH1,
                       textAlign: sm ? "left" : "center",
-                    }}
-                  >
+                    }}>
                     Top 10 Cryptos in the World
                   </Typography>
                 )}
@@ -234,11 +196,7 @@ function Home() {
                 )}
               </Grid>
             </Grid>
-            <CryptoLists
-              data={cryptoCoins}
-              isFetcing={limitedCryptosDataIsFetching}
-              hideSearch
-            />
+            <CryptoLists data={cryptoCoins} isFetcing={limitedCryptosDataIsFetching} hideSearch />
           </div>
           <div className="top-10">
             <Grid
@@ -249,8 +207,7 @@ function Home() {
               alignItems={"center"}
               sx={{
                 mb: md ? 5 : 3,
-              }}
-            >
+              }}>
               <Grid item>
                 {cryptoNewsDataIsFetching ? (
                   <Skeleton
@@ -271,8 +228,7 @@ function Home() {
                       ...cH1,
 
                       textAlign: sm ? "left" : "center",
-                    }}
-                  >
+                    }}>
                     Top 10 Crypto News in the World
                   </Typography>
                 )}
@@ -297,7 +253,7 @@ function Home() {
                 )}
               </Grid>
             </Grid>
-            <NewsLists data={cryptoNews} isFetcing={cryptoNewsDataIsFetching} />
+            <NewsLists data={cryptoNews} isFetching={cryptoNewsDataIsFetching} />
           </div>
         </Box>
       </Box>

@@ -1,6 +1,6 @@
 // Import React components
 import SideBar from "../SideBar.tsx";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
 
 // Import React components
@@ -12,11 +12,13 @@ import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts
 import { useAppSelector } from "../../app/store/hooks.ts";
 
 function News() {
+  const md = useMediaQuery("(min-width: 900px)");
+
   let cryptoSelectedName = useAppSelector((state) => state.newsSelect.value);
   cryptoSelectedName.toLocaleLowerCase();
 
   if (cryptoSelectedName == "") {
-    cryptoSelectedName = "/coindesk";
+    cryptoSelectedName = "/bitcoinist";
   }
 
   const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } =
@@ -28,22 +30,14 @@ function News() {
 
   const cryptoNews = cryptoNewsData?.data;
 
-  console.log(cryptoNewsData);
-
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <SideBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
           <DrawerHeader />
-          {cryptoNewsDataIsFetching ? (
-            <h2>Loading...</h2>
-          ) : (
-            <>
-              <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
-              <NewsList data={cryptoNews} />
-            </>
-          )}
+          <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
+          <NewsList data={cryptoNews} isFetching={cryptoNewsDataIsFetching} />
         </Box>
       </Box>
     </>
