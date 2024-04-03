@@ -16,19 +16,19 @@ function News() {
   cryptoSelectedName.toLocaleLowerCase();
 
   if (cryptoSelectedName == "") {
-    cryptoSelectedName = "cryptocurrency";
+    cryptoSelectedName = "/coindesk";
   }
 
   const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } =
     useGetCryptoNewsQuery({
       params: {
-        q: cryptoSelectedName,
-        sortBy: "popularity",
-        apiKey: import.meta.env.VITE_NEWS_API_KEY,
+        source: cryptoSelectedName,
       },
     });
 
-  const cryptoNews = cryptoNewsData?.articles;
+  const cryptoNews = cryptoNewsData?.data;
+
+  console.log(cryptoNewsData);
 
   return (
     <>
@@ -40,7 +40,7 @@ function News() {
             <h2>Loading...</h2>
           ) : (
             <>
-              <NewsListSelect />
+              <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
               <NewsList data={cryptoNews} />
             </>
           )}

@@ -48,12 +48,10 @@ function Home() {
   const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } =
     useGetCryptoNewsQuery({
       params: {
-        q: "cryptocurrency",
-        sortBy: "popularity",
-        apiKey: import.meta.env.VITE_NEWS_API_KEY,
+        source: "/bitcoinist",
       },
     });
-  let cryptoNews = cryptoNewsData?.articles;
+  let cryptoNews = cryptoNewsData?.data;
   cryptoNews = cryptoNews?.slice(0, 10);
 
   // Const Styled Components
