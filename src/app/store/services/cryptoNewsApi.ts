@@ -10,7 +10,10 @@ const BaseURL = import.meta.env.VITE_CRYPTO_NEWS_BASE_URL;
 
 const createApiRequest = (url: string) => ({
   url,
-  headers: cryptoApiHeader,
+  headers: {
+    ...cryptoApiHeader,
+    Mode: "no-cors",
+  },
 });
 
 export const cryptoNewsApi = createApi({
