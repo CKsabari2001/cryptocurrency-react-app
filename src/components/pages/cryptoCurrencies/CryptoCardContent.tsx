@@ -3,9 +3,9 @@ import { Typography } from "@mui/material";
 // Millify
 import millify from "millify";
 // Types
-import { CryptoCoinData } from "../../../types";
+import { CryptoCoinsData } from "../../../types";
 
-function CryptoCardContent({ coin }: { coin: CryptoCoinData }) {
+function CryptoCardContent({ coin }: { coin: CryptoCoinsData }) {
   const cardBodyData = [
     {
       name: "Price",

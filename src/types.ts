@@ -1,3 +1,6 @@
+import { SelectChangeEvent } from "@mui/material";
+import { ReactNode } from "react";
+
 export interface SideBarProps {
   open?: boolean;
   handleDrawerOpen?: () => void;
@@ -36,7 +39,7 @@ export interface CryptoSearchBarProps {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface CryptoCoinData {
+export interface CryptoCoinsData {
   uuid: string;
   name: string;
   rank: number;
@@ -47,12 +50,12 @@ export interface CryptoCoinData {
 }
 
 export interface CryptoCardProps {
-  coinList?: CryptoCoinData[];
+  coinList?: CryptoCoinsData[];
   isFetching: boolean;
 }
 
 export interface CryptoListsProps {
-  data?: CryptoCoinData[];
+  data?: CryptoCoinsData[];
   isFetching: boolean;
   hideSearch?: boolean;
 }
@@ -78,4 +81,37 @@ export interface NewsCardProps {
     news: CryptoNewsData;
     relativeTime: string;
   };
+}
+
+export interface CryptoCoinData {
+  name: string;
+  uuid: string;
+  timePeriod: string;
+  price: number;
+  change: number;
+  symbol: string;
+}
+
+export interface CryptoDetailsProps {
+  data: CryptoCoinData;
+  isFetching: boolean;
+}
+
+export interface PriceHistoryItem {
+  price: number;
+  timestamp: number;
+}
+
+export interface PriceHistoryData {
+  history: PriceHistoryItem[];
+}
+
+export interface CryptoChartDataProps {
+  data: PriceHistoryData;
+}
+
+export interface ChartSelectBoxMenuProps {
+  value?: string;
+  cryptoName?: string;
+  handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
 }

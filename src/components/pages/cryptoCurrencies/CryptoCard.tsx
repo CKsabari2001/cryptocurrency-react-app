@@ -6,7 +6,7 @@ import { Grid, useMediaQuery, Card, CardContent } from "@mui/material";
 import CryptoCardLoader from "./CryptoCardLoader";
 import CryptoCardContent from "./CryptoCardContent";
 // Types
-import { CryptoCoinData, CryptoCardProps } from "../../../types";
+import { CryptoCoinsData, CryptoCardProps } from "../../../types";
 
 function CryptoCard({ coinList, isFetching }: CryptoCardProps) {
   const md = useMediaQuery("(min-width: 900px)");
@@ -19,7 +19,7 @@ function CryptoCard({ coinList, isFetching }: CryptoCardProps) {
           <CryptoCardLoader />
         ) : (
           <>
-            {coinList?.map((coin: CryptoCoinData) => (
+            {coinList?.map((coin: CryptoCoinsData) => (
               <Grid item key={coin.uuid} xs={12} sm={6} md={4} xl={3}>
                 <Link to={`/cryptocurrencies/coins/${coin.uuid}`}>
                   <Card className="crypto-card" variant="outlined" sx={{ margin: "auto" }}>

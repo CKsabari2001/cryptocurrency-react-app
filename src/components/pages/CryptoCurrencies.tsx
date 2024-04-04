@@ -8,13 +8,13 @@ import SideBar from "../sidebar/SideBar.tsx";
 // Redux
 import { useGetCryptosQuery } from "../../app/store/services/cryptoApi.ts";
 // Types
-import { CryptoCoinData } from "../../types.ts";
+import { CryptoCoinsData } from "../../types.ts";
 
 function CryptoCurrencies() {
   const md = useMediaQuery("(min-width: 900px)");
 
   const { data: cryptoData, isFetching: cryptoDataIsFetching } = useGetCryptosQuery({});
-  const cryptoCoins: CryptoCoinData[] = cryptoData?.data?.coins;
+  const cryptoCoins: CryptoCoinsData[] = cryptoData?.data?.coins;
 
   return (
     <>

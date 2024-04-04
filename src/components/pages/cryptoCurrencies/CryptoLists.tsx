@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import CryptoSearchBar from "./CryptoSearchBar";
 import CryptoCard from "./CryptoCard";
 // Types
-import { CryptoCoinData, CryptoListsProps } from "../../../types";
+import { CryptoCoinsData, CryptoListsProps } from "../../../types";
 
 function CryptoLists({ data, isFetching, hideSearch }: CryptoListsProps) {
   const [coinList, setCoinList] = useState(data);
@@ -11,7 +11,7 @@ function CryptoLists({ data, isFetching, hideSearch }: CryptoListsProps) {
 
   useEffect(() => {
     if (searchTerm.length > 0) {
-      const filterCoins = data?.filter((coin: CryptoCoinData) => {
+      const filterCoins = data?.filter((coin: CryptoCoinsData) => {
         return coin.name.toLowerCase().includes(searchTerm.toLowerCase());
       });
       setCoinList(filterCoins);

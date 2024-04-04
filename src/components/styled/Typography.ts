@@ -10,6 +10,14 @@ export const cH1 = (theme: Theme) =>
     color: variables.textColorPrimary,
     mb: 0,
   });
+export const cH2 = (theme: Theme) =>
+  createStyles({
+    fontFamily: " 'Roboto', sans-serif",
+    fontSize: theme.breakpoints.up("md") ? "34px" : "24px",
+    fontWeight: 700,
+    color: variables.textColorPrimary,
+    marginBottom: theme.breakpoints.up("md") ? "0" : "10px",
+  });
 export const scH1 = (theme: Theme) =>
   createStyles({
     fontSize: theme.breakpoints.up("md") ? "38px" : "28px",
