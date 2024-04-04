@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 // MUI
-import SideBar from "../SideBar.tsx";
+import SideBar from "../sidebar/SideBar.tsx";
 import { Box, Skeleton, Typography, useMediaQuery } from "@mui/material";
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
 
@@ -21,10 +21,9 @@ function CryptoDetails() {
   const md = useMediaQuery("(min-width: 900px)");
 
   const { coinId } = useParams();
-  const { data: coinData, isFetching: coinDataIsFetching } =
-    useGetCryptoCoinQuery({
-      id: coinId ?? "",
-    });
+  const { data: coinData, isFetching: coinDataIsFetching } = useGetCryptoCoinQuery({
+    id: coinId ?? "",
+  });
   const coin = coinData?.data?.coin;
 
   console.log(coinDataIsFetching);
@@ -53,35 +52,24 @@ function CryptoDetails() {
             className="title-section"
             style={{
               marginBottom: md ? "80px" : "30px",
-            }}
-          >
+            }}>
             {coinDataIsFetching ? (
               <>
                 <div
                   style={{
                     maxWidth: "500px",
                     margin: "0 auto",
-                  }}
-                >
+                  }}>
                   <Skeleton variant="text" sx={{ fontSize: cH1.fontSize }} />
                   <Skeleton variant="text" sx={{ fontSize: cH6.fontSize }} />
                 </div>
               </>
             ) : (
               <>
-                <Typography
-                  variant={isMobileScreen ? "h4" : "h5"}
-                  component="h2"
-                  gutterBottom
-                  sx={cH1}
-                >
+                <Typography variant={isMobileScreen ? "h4" : "h5"} component="h2" gutterBottom sx={cH1}>
                   {coin.name} ({coin.name}-{coin.symbol}) Price
                 </Typography>
-                <Typography
-                  variant={isMobileScreen ? "body1" : "body2"}
-                  component="h6"
-                  sx={cH6}
-                >
+                <Typography variant={isMobileScreen ? "body1" : "body2"} component="h6" sx={cH6}>
                   {coin.name} live price in US dollars.
                 </Typography>
               </>

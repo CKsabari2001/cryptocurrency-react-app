@@ -1,12 +1,11 @@
-// Import React components
-import SideBar from "../SideBar.tsx";
+// Mui
 import { Box, useMediaQuery } from "@mui/material";
+// Styled Components
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
-
-// Import React components
+// components
+import SideBar from "../sidebar/SideBar.tsx";
 import NewsList from "./news/NewsLists.tsx";
 import NewsListSelect from "./news/NewsListSelect.tsx";
-
 // Redux
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 import { useAppSelector } from "../../app/store/hooks.ts";
@@ -21,12 +20,11 @@ function News() {
     cryptoSelectedName = "/bitcoinist";
   }
 
-  const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } =
-    useGetCryptoNewsQuery({
-      params: {
-        source: cryptoSelectedName,
-      },
-    });
+  const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } = useGetCryptoNewsQuery({
+    params: {
+      source: cryptoSelectedName,
+    },
+  });
 
   const cryptoNews = cryptoNewsData?.data;
 

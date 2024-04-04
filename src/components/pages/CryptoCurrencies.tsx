@@ -1,20 +1,20 @@
-// Import React components
-import SideBar from "../SideBar.tsx";
+// Mui
 import { Box, useMediaQuery } from "@mui/material";
+// Styled Components
 import { DrawerHeader } from "../styled/sideBarStyled.ts";
-
-// Import React components
+// Components
 import CryptoLists from "./cryptoCurrencies/CryptoLists.tsx";
-
-// // Redux
+import SideBar from "../sidebar/SideBar.tsx";
+// Redux
 import { useGetCryptosQuery } from "../../app/store/services/cryptoApi.ts";
+// Types
+import { CryptoCoinData } from "../../types.ts";
 
 function CryptoCurrencies() {
   const md = useMediaQuery("(min-width: 900px)");
 
-  const { data: cryptoData, isFetching: cryptoDataIsFetching } =
-    useGetCryptosQuery({});
-  const cryptoCoins = cryptoData?.data?.coins;
+  const { data: cryptoData, isFetching: cryptoDataIsFetching } = useGetCryptosQuery({});
+  const cryptoCoins: CryptoCoinData[] = cryptoData?.data?.coins;
 
   return (
     <>
@@ -22,7 +22,7 @@ function CryptoCurrencies() {
         <SideBar />
         <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
           <DrawerHeader />
-          <CryptoLists data={cryptoCoins} isFetcing={cryptoDataIsFetching} />
+          <CryptoLists data={cryptoCoins} isFetching={cryptoDataIsFetching} />
         </Box>
       </Box>
     </>
