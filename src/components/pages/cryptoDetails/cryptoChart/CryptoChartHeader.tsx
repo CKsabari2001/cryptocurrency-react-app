@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 // Millify
 import millify from "millify";
 // Components
-import ChartSelectBox from "./ChartSelectBox";
+import ChartSelectBox from "./chartSelectBox/ChartSelectBox";
 // Types
 import { CryptoCoinData } from "../../../../types";
 // Styles

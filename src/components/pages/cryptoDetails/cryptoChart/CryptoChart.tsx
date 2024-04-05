@@ -5,7 +5,7 @@ import { useGetCryptoPriceHistoryQuery } from "../../../../app/store/services/cr
 import { useAppSelector } from "../../../../app/store/hooks.ts";
 // Types
 import { CryptoDetailsProps } from "../../../../types.ts";
-import CryptoChartLoader from "./CryptoChartLoader.tsx";
+import CryptoChartLoader from "./chartLoader/CryptoChartLoader.tsx";
 import CryptoChartHeader from "./CryptoChartHeader.tsx";
 import { cChartCard, cChartCardContent } from "../../../styled/CryptoChartLoader.ts";
 import CryptoChartData from "./CryptoChartData.tsx";

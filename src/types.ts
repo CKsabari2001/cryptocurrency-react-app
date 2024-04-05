@@ -115,3 +115,53 @@ export interface ChartSelectBoxMenuProps {
   cryptoName?: string;
   handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
 }
+
+export interface CoinDataValueStats {
+  name: string;
+  price: number;
+  rank: number;
+  "24hVolume": number;
+  marketCap: number;
+  allTimeHigh: {
+    price: number;
+  };
+  numberOfMarkets: number;
+  numberOfExchanges: number;
+  supply: {
+    confirmed: boolean;
+    total: number;
+    circulating: number;
+  };
+}
+
+export interface CryptoStatsProps {
+  data: CoinDataValueStats;
+  isFetching: boolean;
+}
+
+export interface CoinStats {
+  title: string;
+  data: number;
+}
+
+export interface OtherStats {
+  title: string;
+  data: string | boolean;
+}
+
+export interface CryptoDescriptionData {
+  name: string;
+  description: string;
+  links: Links[];
+}
+
+export interface CryptoDescriptionProps {
+  data: CryptoDescriptionData;
+  isFetching: boolean;
+}
+
+export interface Links {
+  name: string;
+  url: string;
+  type: string;
+}

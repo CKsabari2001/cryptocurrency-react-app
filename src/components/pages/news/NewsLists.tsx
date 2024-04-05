@@ -7,7 +7,7 @@ import { Grid, useMediaQuery } from "@mui/material";
 import { NewsListsProps, CryptoNewsData } from "../../../types";
 // Components
 import NewsCard from "./NewsCard";
-import NewsCardLoader from "./NewsCardLoader";
+import NewsCardLoader from "./newsLoader/NewsCardLoader";
 
 function NewsLists({ data, isFetching }: NewsListsProps) {
   const lg = useMediaQuery("(min-width: 1200px)");

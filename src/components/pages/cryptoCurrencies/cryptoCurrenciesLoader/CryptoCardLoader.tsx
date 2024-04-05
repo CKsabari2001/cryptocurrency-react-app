@@ -1,6 +1,6 @@
 import { Card, CardContent, Grid, Skeleton, useMediaQuery } from "@mui/material";
 // Scss Variables
-import variables from "../../../assets/scss/_Variables.module.scss";
+import variables from "../../../../assets/scss/_Variables.module.scss";
 
 function CryptoCardLoader() {
   const md = useMediaQuery("(min-width: 900px)");

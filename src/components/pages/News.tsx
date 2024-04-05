@@ -5,7 +5,7 @@ import { DrawerHeader } from "../styled/sideBarStyled.ts";
 // components
 import SideBar from "../sidebar/SideBar.tsx";
 import NewsList from "./news/NewsLists.tsx";
-import NewsListSelect from "./news/NewsListSelect.tsx";
+import NewsListSelect from "./news/nesSelectBox/NewsListSelect.tsx";
 // Redux
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 import { useAppSelector } from "../../app/store/hooks.ts";

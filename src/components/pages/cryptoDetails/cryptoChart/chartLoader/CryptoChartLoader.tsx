@@ -7,7 +7,7 @@ import {
   cH2s,
   cH6s,
   cCharts,
-} from "../../../styled/CryptoChartLoader";
+} from "../../../../styled/CryptoChartLoader";
 
 function CryptoChartLoader() {
   return (

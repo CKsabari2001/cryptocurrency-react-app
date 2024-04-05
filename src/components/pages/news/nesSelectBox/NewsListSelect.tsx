@@ -3,13 +3,13 @@ import { Box, InputLabel, FormControl } from "@mui/material";
 // Types
 import { SelectChangeEvent } from "@mui/material/Select";
 // Redux
-import { useAppDispatch, useAppSelector } from "../../../app/store/hooks.ts";
-import { setNewsSelectValue } from "../../../app/store/features/newsSelect.ts";
+import { useAppDispatch, useAppSelector } from "../../../../app/store/hooks.ts";
+import { setNewsSelectValue } from "../../../../app/store/features/newsSelect.ts";
 // Components
 import NewsListSelectMenu from "./NewsListSelectMenu.tsx";
-import NewsListSelectLoader from "./NewsListSelectLoader.tsx";
+import NewsListSelectLoader from "../newsLoader/NewsListSelectLoader.tsx";
 // Styles
-import { inputLabel } from "../../styled/newsListSelect.ts";
+import { inputLabel } from "../../../styled/newsListSelect.ts";
 
 function NewsListSelect({ isFetching }: { isFetching: boolean }) {
   const dispatch = useAppDispatch();

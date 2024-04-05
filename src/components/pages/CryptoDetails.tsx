@@ -8,8 +8,8 @@ import { DrawerHeader } from "../styled/sideBarStyled.ts";
 import { useGetCryptoCoinQuery } from "../../app/store/services/cryptoApi.ts";
 // Components
 import SideBar from "../sidebar/SideBar.tsx";
-import CryptoStats from "./cryptoDetails/CryptoStats.tsx";
-import CryptoDescription from "./cryptoDetails/CryptoDescription.tsx";
+import CryptoStats from "./cryptoDetails/cryptoStats/CryptoStats.tsx";
+import CryptoDescription from "./cryptoDetails/cryptoDescription/CryptoDescription.tsx";
 import CryptoChart from "./cryptoDetails/cryptoChart/CryptoChart.tsx";
 import CryptoTitle from "./cryptoDetails/CryptoTitle.tsx";
 

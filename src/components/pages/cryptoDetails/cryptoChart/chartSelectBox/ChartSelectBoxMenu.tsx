@@ -1,9 +1,9 @@
 // Mui
 import { MenuItem, Select } from "@mui/material";
 // Scss Variables
-import variables from "../../../../assets/scss/_Variables.module.scss";
+import variables from "../../../../../assets/scss/_Variables.module.scss";
 // Types
-import { ChartSelectBoxMenuProps } from "../../../../types";
+import { ChartSelectBoxMenuProps } from "../../../../../types";
 function ChartSelectBoxMenu({ value, handleChange }: ChartSelectBoxMenuProps) {
   const timeFrameOptions = ["1h", "3h", "12h", "24h", "7d", "30d", "3m", "1y", "3y", "5y"];
 

@@ -5,6 +5,7 @@ import variables from "../../assets/scss/_Variables.module.scss";
 
 export const cH1 = (theme: Theme) =>
   createStyles({
+    fontFamily: " 'Roboto', sans-serif",
     fontSize: theme.breakpoints.up("md") ? "38px" : "28px",
     fontWeight: 700,
     color: variables.textColorPrimary,
@@ -27,6 +28,7 @@ export const scH1 = (theme: Theme) =>
 
 export const cH6 = (theme: Theme) =>
   createStyles({
+    fontFamily: "'Lato', sans-serif",
     fontSize: theme.breakpoints.up("md") ? "18px" : "16px",
     fontWeight: 500,
     color: variables.textColorTertiary,
@@ -49,4 +51,17 @@ export const scP = (theme: Theme) =>
   createStyles({
     fontSize: theme.breakpoints.up("md") ? "24px" : "22px",
     maxWidth: "300px",
+  });
+
+export const cLink = (theme: Theme) =>
+  createStyles({
+    fontFamily: "'Lato', sans-serif",
+    fontSize: theme.breakpoints.up("md") ? "18px" : "16px",
+    color: variables.bgColorPrimary,
+    fontWeight: 700,
+    textDecoration: "none",
+
+    "&:hover": {
+      color: variables.bgColorPrimaryFaded,
+    },
   });

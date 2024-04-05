@@ -1,10 +1,10 @@
 // Mui
 import { MenuItem } from "@mui/material";
 // Styles
-import { select } from "../../styled/newsListSelect";
+import { select } from "../../../styled/newsListSelect";
 // Types
 import Select from "@mui/material/Select";
-import { ChartSelectBoxMenuProps } from "../../../types";
+import { ChartSelectBoxMenuProps } from "../../../../types";
 function NewsListSelectMenu({ cryptoName, handleChange }: ChartSelectBoxMenuProps) {
   const selectBoxArr = [
     { value: "/coindesk", name: "CoinDesk" },

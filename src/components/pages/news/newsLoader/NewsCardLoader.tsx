@@ -1,7 +1,7 @@
 // MUI
 import { Grid, useMediaQuery, Card, CardContent, Skeleton } from "@mui/material";
 // Styles
-import { cNewsCardH6, cNewsCardP } from "../../styled/NewsCard";
+import { cNewsCardH6, cNewsCardP } from "../../../styled/NewsCard";
 
 function NewsCardLoader() {
   const lg = useMediaQuery("(min-width: 1200px)");

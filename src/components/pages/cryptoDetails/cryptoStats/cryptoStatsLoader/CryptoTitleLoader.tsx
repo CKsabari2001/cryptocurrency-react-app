@@ -1,7 +1,7 @@
 // Mui
 import { Skeleton } from "@mui/material";
 // Styles
-import { cH6, cH1 } from "../../styled/Typography";
+import { cH6, cH1 } from "../../../../styled/Typography";
 
 function CryptoTitleLoader() {
   return (

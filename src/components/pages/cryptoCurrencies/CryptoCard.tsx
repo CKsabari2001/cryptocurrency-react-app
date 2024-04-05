@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Mui
 import { Grid, useMediaQuery, Card, CardContent } from "@mui/material";
 // Components
-import CryptoCardLoader from "./CryptoCardLoader";
+import CryptoCardLoader from "./cryptoCurrenciesLoader/CryptoCardLoader";
 import CryptoCardContent from "./CryptoCardContent";
 // Types
 import { CryptoCoinsData, CryptoCardProps } from "../../../types";

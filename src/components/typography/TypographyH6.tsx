@@ -10,7 +10,7 @@ function TypographyH6({ text, isFetching }: TypographyProps) {
       {isFetching ? (
         <Skeleton variant="text" sx={scH6} />
       ) : (
-        <Typography variant="h2" component="h2" gutterBottom sx={cH6}>
+        <Typography variant="h6" component="h2" gutterBottom sx={cH6}>
           {text}
         </Typography>
       )}

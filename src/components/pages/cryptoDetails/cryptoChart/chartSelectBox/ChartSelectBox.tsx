@@ -3,10 +3,10 @@ import { Box, InputLabel, FormControl } from "@mui/material";
 // Types
 import { SelectChangeEvent } from "@mui/material/Select";
 // Redux
-import { useAppDispatch, useAppSelector } from "../../../../app/store/hooks.ts";
-import { setChartSelectValue } from "../../../../app/store/features/chartSelect.ts";
+import { useAppDispatch, useAppSelector } from "../../../../../app/store/hooks.ts";
+import { setChartSelectValue } from "../../../../../app/store/features/chartSelect.ts";
 // Scss Variables
-import variables from "../../../../assets/scss/_Variables.module.scss";
+import variables from "../../../../../assets/scss/_Variables.module.scss";
 import ChartSelectBoxMenu from "./ChartSelectBoxMenu.tsx";
 
 function ChartSelectBox() {
