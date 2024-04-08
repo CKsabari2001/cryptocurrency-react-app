@@ -9,6 +9,8 @@ import SideBar from "../sidebar/SideBar.tsx";
 import { useGetCryptosQuery } from "../../app/store/services/cryptoApi.ts";
 // Types
 import { CryptoCoinsData } from "../../types.ts";
+// Custom Motion Components
+import FadeInOut from "../motionAnimations/PageFadeInOut.tsx";
 
 function CryptoCurrencies() {
   const md = useMediaQuery("(min-width: 900px)");
@@ -20,10 +22,12 @@ function CryptoCurrencies() {
     <>
       <Box sx={{ display: "flex" }}>
         <SideBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
-          <DrawerHeader />
-          <CryptoLists data={cryptoCoins} isFetching={cryptoDataIsFetching} />
-        </Box>
+        <FadeInOut>
+          <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
+            <DrawerHeader />
+            <CryptoLists data={cryptoCoins} isFetching={cryptoDataIsFetching} />
+          </Box>
+        </FadeInOut>
       </Box>
     </>
   );

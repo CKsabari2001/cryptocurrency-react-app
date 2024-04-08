@@ -6,15 +6,18 @@ import { cNewsCardH6, cNewsCardP, cNewsCardBp } from "../../styled/NewsCard";
 import { NewsCardProps } from "../../../types";
 // Custom Functions
 import { limitWords } from "../../../functions";
+import NewsCardImgZoomHover from "../../motionAnimations/NewsCardImgZoomHover";
 
-function NewsCardContent({ data }: NewsCardProps) {
+function NewsCardContent({ data, isHover }: NewsCardProps) {
   const news = data.news;
   const relativeTime = data.relativeTime;
 
   return (
     <>
       <div className="card-header">
-        <img src={news.thumbnail} alt="" className="card-header-img" />
+        <NewsCardImgZoomHover isHover={isHover}>
+          <img src={news.thumbnail} alt="" className="card-header-img" />
+        </NewsCardImgZoomHover>
       </div>
       <div className="card-content-container" style={{ flexGrow: 1 }}>
         <div className="card-body">

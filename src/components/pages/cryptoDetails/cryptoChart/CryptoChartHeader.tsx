@@ -8,6 +8,9 @@ import ChartSelectBox from "./chartSelectBox/ChartSelectBox";
 import { CryptoCoinData } from "../../../../types";
 // Styles
 import { cH2, cH6, cBox, cBox2 } from "../../../styled/CryptoChartHeader";
+// Motion Custom Animation
+import RevealOnViewLeft from "../../../motionAnimations/RevealOnViewLeft";
+import RevealOnViewRight from "../../../motionAnimations/RevealOnViewRight";
 
 function CryptoChartHeader({ data }: { data: CryptoCoinData }) {
   const md = useMediaQuery("(min-width: 900px)");
@@ -20,17 +23,21 @@ function CryptoChartHeader({ data }: { data: CryptoCoinData }) {
         }}>
         <ChartSelectBox />
         <Box sx={cBox}>
-          <Typography variant={"h4"} component="h2" sx={cH2}>
-            {data.name} Price Chart
-          </Typography>
-          <Box sx={cBox2}>
-            <Typography variant={"h5"} component="h3" gutterBottom sx={cH6}>
-              Current {data.name} Change: <span>({data.change} %)</span>
+          <RevealOnViewLeft>
+            <Typography variant={"h4"} component="h2" sx={cH2}>
+              {data.name} Price Chart
             </Typography>
-            <Typography variant={"h5"} component="h3" gutterBottom sx={cH6}>
-              Current {data.name} Price: <span>$ {millify(data.price)}</span>
-            </Typography>
-          </Box>
+          </RevealOnViewLeft>
+          <RevealOnViewRight>
+            <Box sx={cBox2}>
+              <Typography variant={"h5"} component="h3" gutterBottom sx={cH6}>
+                Current {data.name} Change: <span>({data.change} %)</span>
+              </Typography>
+              <Typography variant={"h5"} component="h3" gutterBottom sx={cH6}>
+                Current {data.name} Price: <span>$ {millify(data.price)}</span>
+              </Typography>
+            </Box>
+          </RevealOnViewRight>
         </Box>
       </Box>
     </>

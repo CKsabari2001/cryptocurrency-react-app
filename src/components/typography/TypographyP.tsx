@@ -4,22 +4,33 @@ import { Skeleton, Typography, useMediaQuery } from "@mui/material";
 import { cP, scP } from "../styled/Typography";
 // Types
 import { TypographyProps } from "../../types";
-function TypographyP({ text, isFetching }: TypographyProps) {
+import RevealOnView from "../motionAnimations/RevealOnView";
+
+function TypographyP({ text, isFetching, index }: TypographyProps) {
   const md = useMediaQuery("(min-width: 900px)");
 
-  return (
-    <div
-      style={{
-        marginTop: md ? "30px" : "15px",
-      }}>
-      {isFetching ? (
+  if (isFetching) {
+    return (
+      <div
+        style={{
+          marginTop: md ? "30px" : "15px",
+        }}>
         <Skeleton variant="text" sx={scP} />
-      ) : (
+      </div>
+    );
+  }
+
+  return (
+    <RevealOnView index={index} isHomePage={true} isHHeight={true}>
+      <div
+        style={{
+          marginTop: md ? "30px" : "15px",
+        }}>
         <Typography variant="h2" component="h2" gutterBottom sx={cP}>
           {text}
         </Typography>
-      )}
-    </div>
+      </div>
+    </RevealOnView>
   );
 }
 

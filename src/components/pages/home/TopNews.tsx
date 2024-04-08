@@ -7,6 +7,9 @@ import TypographyH2 from "../../typography/TypographyH2";
 import ViewMore from "../../Button/ViewMore.tsx";
 // Components
 import NewsLists from "../news/NewsLists.tsx";
+// Motion Animation Components
+import RevealOnViewLeft from "../../motionAnimations/RevealOnViewLeft";
+import RevealOnViewRight from "../../motionAnimations/RevealOnViewRight.tsx";
 function TopNews() {
   const { data: cryptoNewsData, isFetching: cryptoNewsDataIsFetching } = useGetCryptoNewsQuery({
     params: {
@@ -32,13 +35,17 @@ function TopNews() {
           mb: md ? 5 : 3,
         }}>
         <Grid item flexGrow={1}>
-          <TypographyH2 text={"Top 10 Crypto News in the World"} isFetching={cryptoNewsDataIsFetching} />
+          <RevealOnViewLeft>
+            <TypographyH2 text={"Top 10 Crypto News in the World"} isFetching={cryptoNewsDataIsFetching} />
+          </RevealOnViewLeft>
         </Grid>
         <Grid item>
-          <ViewMore text={"View More"} isFetching={cryptoNewsDataIsFetching} />
+          <RevealOnViewRight>
+            <ViewMore text={"View More"} isFetching={cryptoNewsDataIsFetching} />
+          </RevealOnViewRight>
         </Grid>
       </Grid>
-      <NewsLists data={cryptoNews} isFetching={cryptoNewsDataIsFetching} />
+      <NewsLists data={cryptoNews} isFetching={cryptoNewsDataIsFetching} isHomePage />
     </div>
   );
 }

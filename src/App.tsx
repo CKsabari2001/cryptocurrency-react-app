@@ -17,14 +17,19 @@ import { customTheme } from "./theme/customTheme.ts";
 // Router
 import { router } from "./Router.tsx";
 
+// Framer Motion
+import { AnimatePresence } from "framer-motion";
+
 function App() {
   return (
     <>
-      <ThemeProvider theme={customTheme}>
-        <Provider store={store}>
-          <RouterProvider router={router} />
-        </Provider>
-      </ThemeProvider>
+      <AnimatePresence>
+        <ThemeProvider theme={customTheme}>
+          <Provider store={store}>
+            <RouterProvider router={router} />
+          </Provider>
+        </ThemeProvider>
+      </AnimatePresence>
     </>
   );
 }

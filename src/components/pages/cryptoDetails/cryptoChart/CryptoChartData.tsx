@@ -8,6 +8,8 @@ import { CryptoChartDataProps } from "../../../../types";
 import { extractCoinPriceHistoryAndTimestamps } from "../../../../functions";
 // Data
 import { chartOption } from "../../../../chartJs";
+// Motion Custom Animation
+import RevealOnView from "../../../motionAnimations/RevealOnView";
 function CryptoChartData({ data }: { data: CryptoChartDataProps }) {
   const priceHistory = data;
   const coinDataObj = extractCoinPriceHistoryAndTimestamps(priceHistory);
@@ -24,7 +26,11 @@ function CryptoChartData({ data }: { data: CryptoChartDataProps }) {
     ],
   };
 
-  return <Line data={chartData} options={chartOption} />;
+  return (
+    <RevealOnView>
+      <Line data={chartData} options={chartOption} />
+    </RevealOnView>
+  );
 }
 
 export default CryptoChartData;

@@ -11,7 +11,7 @@ import SideDrawerList from "./SideDrawerList";
 function SideDrawer({ open, handleDrawerClose }: SideBarProps) {
   return (
     <>
-      <Drawer variant="permanent" open={open}>
+      <Drawer className="Test" variant="permanent" open={open}>
         <SideDrawerHeader handleDrawerClose={handleDrawerClose} />
         <Divider />
         <SideDrawerList open={open} />

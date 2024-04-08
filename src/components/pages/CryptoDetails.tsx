@@ -12,7 +12,8 @@ import CryptoStats from "./cryptoDetails/cryptoStats/CryptoStats.tsx";
 import CryptoDescription from "./cryptoDetails/cryptoDescription/CryptoDescription.tsx";
 import CryptoChart from "./cryptoDetails/cryptoChart/CryptoChart.tsx";
 import CryptoTitle from "./cryptoDetails/CryptoTitle.tsx";
-
+// Custom Motion Components
+import FadeInOut from "../motionAnimations/PageFadeInOut.tsx";
 function CryptoDetails() {
   const md = useMediaQuery("(min-width: 900px)");
 
@@ -26,13 +27,15 @@ function CryptoDetails() {
     <>
       <Box sx={{ display: "flex" }}>
         <SideBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
-          <DrawerHeader />
-          <CryptoTitle data={coin} isFetching={coinDataIsFetching} />
-          <CryptoChart data={coin} isFetching={coinDataIsFetching} />
-          <CryptoStats data={coin} isFetching={coinDataIsFetching} />
-          <CryptoDescription data={coin} isFetching={coinDataIsFetching} />
-        </Box>
+        <FadeInOut>
+          <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
+            <DrawerHeader />
+            <CryptoTitle data={coin} isFetching={coinDataIsFetching} />
+            <CryptoChart data={coin} isFetching={coinDataIsFetching} />
+            <CryptoStats data={coin} isFetching={coinDataIsFetching} />
+            <CryptoDescription data={coin} isFetching={coinDataIsFetching} />
+          </Box>
+        </FadeInOut>
       </Box>
     </>
   );

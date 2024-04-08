@@ -5,6 +5,8 @@ import { CurrencyExchange, Feed, Home } from "@mui/icons-material";
 import { SideBarProps } from "../../../types";
 // Components
 import SideDrawerListLink from "./SideDrawerListLink";
+// Motion Animation Component
+import SideAppBarTransition from "../../motionAnimations/SideAppBarTransition";
 function SideList({ open }: SideBarProps) {
   const sm = useMediaQuery("(min-width: 600px)");
 
@@ -29,7 +31,9 @@ function SideList({ open }: SideBarProps) {
   return (
     <List>
       {sideBarMenus.map((obj, i) => (
-        <SideDrawerListLink key={i} data={obj} open={open} />
+        <SideAppBarTransition key={i} index={i}>
+          <SideDrawerListLink data={obj} open={open} />
+        </SideAppBarTransition>
       ))}
     </List>
   );

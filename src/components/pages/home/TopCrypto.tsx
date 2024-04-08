@@ -33,7 +33,7 @@ function TopCrypto() {
           <ViewMore text={"View More"} isFetching={limitedCryptosDataIsFetching} />
         </Grid>
       </Grid>
-      <CryptoLists data={cryptoCoins} isFetching={limitedCryptosDataIsFetching} hideSearch />
+      <CryptoLists data={cryptoCoins} isFetching={limitedCryptosDataIsFetching} isHomePage />
     </div>
   );
 }

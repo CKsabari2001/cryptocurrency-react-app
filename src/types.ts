@@ -30,6 +30,7 @@ export interface GlobalStatsCardProps {
 export interface TypographyProps {
   text: string;
   isFetching: boolean;
+  index?: number;
 }
 
 export interface CryptoSearchBarProps {
@@ -52,12 +53,13 @@ export interface CryptoCoinsData {
 export interface CryptoCardProps {
   coinList?: CryptoCoinsData[];
   isFetching: boolean;
+  isHomePage?: boolean;
 }
 
 export interface CryptoListsProps {
   data?: CryptoCoinsData[];
   isFetching: boolean;
-  hideSearch?: boolean;
+  isHomePage?: boolean;
 }
 
 export interface CryptoNewsData {
@@ -74,6 +76,7 @@ export interface CryptoNewsData {
 export interface NewsListsProps {
   data: CryptoNewsData[];
   isFetching: boolean;
+  isHomePage: boolean;
 }
 
 export interface NewsCardProps {
@@ -81,6 +84,7 @@ export interface NewsCardProps {
     news: CryptoNewsData;
     relativeTime: string;
   };
+  isHover: boolean;
 }
 
 export interface CryptoCoinData {

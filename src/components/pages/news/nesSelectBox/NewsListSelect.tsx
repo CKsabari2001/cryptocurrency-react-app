@@ -10,6 +10,8 @@ import NewsListSelectMenu from "./NewsListSelectMenu.tsx";
 import NewsListSelectLoader from "../newsLoader/NewsListSelectLoader.tsx";
 // Styles
 import { inputLabel } from "../../../styled/newsListSelect.ts";
+// Motion Animation Components
+import RevealOnViewTop from "../../../motionAnimations/RevealOnViewTop.tsx";
 
 function NewsListSelect({ isFetching }: { isFetching: boolean }) {
   const dispatch = useAppDispatch();
@@ -26,14 +28,16 @@ function NewsListSelect({ isFetching }: { isFetching: boolean }) {
 
   return (
     <>
-      <Box className="news-select-box">
-        <FormControl sx={{ width: "100%", maxWidth: "400px" }}>
-          <InputLabel id="demo-simple-select-label" sx={inputLabel}>
-            Select The Source
-          </InputLabel>
-          <NewsListSelectMenu cryptoName={cryptoName} handleChange={handleChange} />
-        </FormControl>
-      </Box>
+      <RevealOnViewTop>
+        <Box className="news-select-box">
+          <FormControl sx={{ width: "100%", maxWidth: "400px" }}>
+            <InputLabel id="demo-simple-select-label" sx={inputLabel}>
+              Select The Source
+            </InputLabel>
+            <NewsListSelectMenu cryptoName={cryptoName} handleChange={handleChange} />
+          </FormControl>
+        </Box>
+      </RevealOnViewTop>
     </>
   );
 }

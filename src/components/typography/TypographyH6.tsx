@@ -4,17 +4,18 @@ import { Skeleton, Typography } from "@mui/material";
 import { cH6, scH6 } from "../styled/Typography";
 // Types
 import { TypographyProps } from "../../types";
-function TypographyH6({ text, isFetching }: TypographyProps) {
+import RevealOnView from "../motionAnimations/RevealOnView";
+function TypographyH6({ text, isFetching, index }: TypographyProps) {
+  if (isFetching) {
+    return <Skeleton variant="text" sx={scH6} />;
+  }
+
   return (
-    <div>
-      {isFetching ? (
-        <Skeleton variant="text" sx={scH6} />
-      ) : (
-        <Typography variant="h6" component="h2" gutterBottom sx={cH6}>
-          {text}
-        </Typography>
-      )}
-    </div>
+    <RevealOnView index={index} isHomePage={true} isHHeight={true}>
+      <Typography variant="h6" component="h2" gutterBottom sx={cH6}>
+        {text}
+      </Typography>
+    </RevealOnView>
   );
 }
 

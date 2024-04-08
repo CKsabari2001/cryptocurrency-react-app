@@ -5,7 +5,7 @@ import CryptoCard from "./CryptoCard";
 // Types
 import { CryptoCoinsData, CryptoListsProps } from "../../../types";
 
-function CryptoLists({ data, isFetching, hideSearch }: CryptoListsProps) {
+function CryptoLists({ data, isFetching, isHomePage }: CryptoListsProps) {
   const [coinList, setCoinList] = useState(data);
   const [searchTerm, setSearchTerm] = React.useState("");
 
@@ -20,15 +20,22 @@ function CryptoLists({ data, isFetching, hideSearch }: CryptoListsProps) {
     }
   }, [searchTerm, data]);
 
+  // For Testing Purpose Local Data
+  // useEffect(() => {
+  //   fetch("/cryptoCoinsData.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setCoinList(data.data.coins));
+  // }, []);
+
   return (
     <>
       <CryptoSearchBar
         isFetching={isFetching}
-        hideSearch={hideSearch}
+        hideSearch={isHomePage}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
-      <CryptoCard coinList={coinList} isFetching={isFetching} />
+      <CryptoCard coinList={coinList} isFetching={isFetching} isHomePage={isHomePage} />
     </>
   );
 }

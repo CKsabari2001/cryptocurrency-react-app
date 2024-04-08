@@ -8,6 +8,8 @@ import { setChartSelectValue } from "../../../../../app/store/features/chartSele
 // Scss Variables
 import variables from "../../../../../assets/scss/_Variables.module.scss";
 import ChartSelectBoxMenu from "./ChartSelectBoxMenu.tsx";
+// Motion Custom Animation
+import RevealOnViewLeft from "../../../../motionAnimations/RevealOnViewLeft.tsx";
 
 function ChartSelectBox() {
   const dispatch = useAppDispatch();
@@ -24,14 +26,16 @@ function ChartSelectBox() {
 
   return (
     <>
-      <Box className="chart-select-box">
-        <FormControl sx={{ width: "100%", maxWidth: "300px" }}>
-          <InputLabel id="demo-simple-select-label" sx={cInputLabel}>
-            Time Frame
-          </InputLabel>
-          <ChartSelectBoxMenu value={value} handleChange={handleChange} />
-        </FormControl>
-      </Box>
+      <RevealOnViewLeft>
+        <Box className="chart-select-box">
+          <FormControl sx={{ width: "100%", maxWidth: "300px" }}>
+            <InputLabel id="demo-simple-select-label" sx={cInputLabel}>
+              Time Frame
+            </InputLabel>
+            <ChartSelectBoxMenu value={value} handleChange={handleChange} />
+          </FormControl>
+        </Box>
+      </RevealOnViewLeft>
     </>
   );
 }

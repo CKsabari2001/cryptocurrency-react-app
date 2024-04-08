@@ -18,6 +18,7 @@ body {
   font-size: 18px;
   font-weight: 500;
   background-color: #f5f7ff !important;
+  overflow-x: hidden;
 }
 
 h1,
@@ -71,4 +72,13 @@ h3 {
   .MuiSvgIcon-root {
     fill: $text-color-tertiary !important;
   }
+}
+
+.MuiSkeleton-root {
+  background-color: $bg-color-primary-faded !important;
+}
+
+.app-header {
+  background-color: #f5f7ff !important;
+  box-shadow: none !important;
 }

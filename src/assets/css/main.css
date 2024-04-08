@@ -180,6 +180,7 @@ body {
   font-size: 18px;
   font-weight: 500;
   background-color: #f5f7ff !important;
+  overflow-x: hidden;
 }
 
 h1,
@@ -228,6 +229,15 @@ h3 {
 }
 .chart-select-box .MuiSvgIcon-root {
   fill: #7d8492 !important;
+}
+
+.MuiSkeleton-root {
+  background-color: rgba(75, 73, 172, 0.1725490196) !important;
+}
+
+.app-header {
+  background-color: #f5f7ff !important;
+  box-shadow: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

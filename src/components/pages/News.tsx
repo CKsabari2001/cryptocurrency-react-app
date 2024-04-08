@@ -9,7 +9,8 @@ import NewsListSelect from "./news/nesSelectBox/NewsListSelect.tsx";
 // Redux
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 import { useAppSelector } from "../../app/store/hooks.ts";
-
+// Custom Motion Components
+import FadeInOut from "../motionAnimations/PageFadeInOut.tsx";
 function News() {
   const md = useMediaQuery("(min-width: 900px)");
 
@@ -32,11 +33,13 @@ function News() {
     <>
       <Box sx={{ display: "flex" }}>
         <SideBar />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
-          <DrawerHeader />
-          <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
-          <NewsList data={cryptoNews} isFetching={cryptoNewsDataIsFetching} />
-        </Box>
+        <FadeInOut>
+          <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
+            <DrawerHeader />
+            <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
+            <NewsList data={cryptoNews} isFetching={cryptoNewsDataIsFetching} isHomePage={false} />
+          </Box>
+        </FadeInOut>
       </Box>
     </>
   );

@@ -13,6 +13,7 @@ function GlobalStatsCard({ globalStats, isFetching }: GlobalStatsCardProps) {
       sx={{
         maxWidth: "50rem",
         mt: md ? 5 : 3,
+        transformStyle: "preserve-3d",
       }}>
       <CardContent
         sx={{
