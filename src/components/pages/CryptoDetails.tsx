@@ -28,7 +28,7 @@ function CryptoDetails() {
       <Box sx={{ display: "flex" }}>
         <SideBar />
         <FadeInOut>
-          <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
+          <Box className="main" component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
             <DrawerHeader />
             <CryptoTitle data={coin} isFetching={coinDataIsFetching} />
             <CryptoChart data={coin} isFetching={coinDataIsFetching} />

@@ -7,7 +7,7 @@ function NewsCardImgZoomHover({ children, isHover }: { children: React.ReactNode
   };
 
   return (
-    <motion.div animate={style.animate} transition={style.transition}>
+    <motion.div style={{ width: "100%" }} animate={style.animate} transition={style.transition}>
       {children}
     </motion.div>
   );

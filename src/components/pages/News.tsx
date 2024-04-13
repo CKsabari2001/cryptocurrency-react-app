@@ -34,7 +34,7 @@ function News() {
       <Box sx={{ display: "flex" }}>
         <SideBar />
         <FadeInOut>
-          <Box component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
+          <Box className="main" component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
             <DrawerHeader />
             <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
             <NewsList data={cryptoNews} isFetching={cryptoNewsDataIsFetching} isHomePage={false} />

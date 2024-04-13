@@ -10,7 +10,10 @@ const BaseURL = import.meta.env.VITE_CRYPTO_BASE_URL;
 
 const createApiRequest = (url: string) => ({
   url,
-  headers: cryptoApiHeader,
+  headers: {
+    ...cryptoApiHeader,
+    Mode: "no-cors",
+  },
 });
 
 interface Params {
@@ -27,8 +30,7 @@ export const cryptoApi = createApi({
       query: () => createApiRequest(`/coins`),
     }),
     getLimitedCryptos: builder.query({
-      query: ({ limit }: { limit: number }) =>
-        createApiRequest(`/coins?limit=${limit}`),
+      query: ({ limit }: { limit: number }) => createApiRequest(`/coins?limit=${limit}`),
     }),
     getCryptoCoin: builder.query({
       query: ({ id }: { id: string }) => createApiRequest(`/coin/${id}`),
@@ -36,9 +38,7 @@ export const cryptoApi = createApi({
 
     getCryptoPriceHistory: builder.query({
       query: ({ params }: Params) =>
-        createApiRequest(
-          `/coin/${params.id}/history?timePeriod=${params.timePeriod}`
-        ),
+        createApiRequest(`/coin/${params.id}/history?timePeriod=${params.timePeriod}`),
     }),
   }),
 });

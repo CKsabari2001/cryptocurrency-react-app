@@ -35,7 +35,7 @@ function RevealOnView({ children, index, isHomePage, isHHeight }: RevealOnViewPr
       variants={variants}
       initial={"hidden"}
       animate={control}
-      transition={{ duration: 0.3, delay: isHomePage ? index * 0.06 : 0.2 }}
+      transition={{ duration: 0.5, delay: isHomePage ? index * 0.06 : 0.2 }}
       style={{ height: isHHeight ? "auto" : "100%" }}>
       {children}
     </motion.div>
