@@ -5,6 +5,7 @@ import { DrawerHeader } from "../styled/sideBarStyled.ts";
 // Components
 import CryptoLists from "./cryptoCurrencies/CryptoLists.tsx";
 import SideBar from "../sidebar/SideBar.tsx";
+import Footer from "../Footer.tsx";
 // Redux
 import { useGetCryptosQuery } from "../../app/store/services/cryptoApi.ts";
 // Types
@@ -26,6 +27,9 @@ function CryptoCurrencies() {
           <Box className="main" component="main" sx={{ flexGrow: 1, p: 3, px: md ? 8 : 5 }}>
             <DrawerHeader />
             <CryptoLists data={cryptoCoins} isFetching={cryptoDataIsFetching} />
+          </Box>
+          <Box component="div" sx={{ flexGrow: 1 }}>
+            <Footer />
           </Box>
         </FadeInOut>
       </Box>
