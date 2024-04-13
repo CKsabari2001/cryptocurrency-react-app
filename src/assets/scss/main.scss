@@ -86,5 +86,9 @@ h3 {
 
 .main {
   margin-bottom: 3rem;
-  min-height: calc(100vh - 117px);
+  min-height: calc(100vh - 114px);
+
+  @media (min-height: 900px) {
+    min-height: calc(100vh - 117px);
+  }
 }

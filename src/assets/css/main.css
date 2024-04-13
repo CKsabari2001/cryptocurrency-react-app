@@ -270,7 +270,12 @@ h3 {
 
 .main {
   margin-bottom: 3rem;
-  min-height: calc(100vh - 117px);
+  min-height: calc(100vh - 114px);
+}
+@media (min-height: 900px) {
+  .main {
+    min-height: calc(100vh - 117px);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
