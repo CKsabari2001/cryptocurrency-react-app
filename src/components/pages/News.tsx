@@ -6,6 +6,7 @@ import { DrawerHeader } from "../styled/sideBarStyled.ts";
 import SideBar from "../sidebar/SideBar.tsx";
 import NewsList from "./news/NewsLists.tsx";
 import NewsListSelect from "./news/nesSelectBox/NewsListSelect.tsx";
+import Footer from "../Footer.tsx";
 // Redux
 import { useGetCryptoNewsQuery } from "../../app/store/services/cryptoNewsApi.ts";
 import { useAppSelector } from "../../app/store/hooks.ts";
@@ -38,6 +39,9 @@ function News() {
             <DrawerHeader />
             <NewsListSelect isFetching={cryptoNewsDataIsFetching} />
             <NewsList data={cryptoNews} isFetching={cryptoNewsDataIsFetching} isHomePage={false} />
+          </Box>
+          <Box component="div" sx={{ flexGrow: 1 }}>
+            <Footer />
           </Box>
         </FadeInOut>
       </Box>

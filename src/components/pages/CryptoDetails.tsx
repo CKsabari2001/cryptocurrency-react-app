@@ -12,6 +12,7 @@ import CryptoStats from "./cryptoDetails/cryptoStats/CryptoStats.tsx";
 import CryptoDescription from "./cryptoDetails/cryptoDescription/CryptoDescription.tsx";
 import CryptoChart from "./cryptoDetails/cryptoChart/CryptoChart.tsx";
 import CryptoTitle from "./cryptoDetails/CryptoTitle.tsx";
+import Footer from "../Footer.tsx";
 // Custom Motion Components
 import FadeInOut from "../motionAnimations/PageFadeInOut.tsx";
 function CryptoDetails() {
@@ -34,6 +35,9 @@ function CryptoDetails() {
             <CryptoChart data={coin} isFetching={coinDataIsFetching} />
             <CryptoStats data={coin} isFetching={coinDataIsFetching} />
             <CryptoDescription data={coin} isFetching={coinDataIsFetching} />
+          </Box>
+          <Box component="div" sx={{ flexGrow: 1 }}>
+            <Footer />
           </Box>
         </FadeInOut>
       </Box>

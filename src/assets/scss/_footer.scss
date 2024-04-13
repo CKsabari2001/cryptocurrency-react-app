@@ -1,0 +1,21 @@
+@import "./Variables.module.scss";
+
+.footer {
+  background-color: $bg-color-primary;
+  padding: 20px 30px;
+
+  h6 {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    font-size: 16px;
+
+    span {
+      font-weight: 800;
+    }
+
+    @media (min-width: 900px) {
+      font-size: 18px;
+    }
+  }
+}

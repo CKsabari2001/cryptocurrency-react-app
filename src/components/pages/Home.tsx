@@ -7,6 +7,7 @@ import SideBar from "../sidebar/SideBar.tsx";
 import GlobalStats from "./home/GlobalStats.tsx";
 import TopCrypto from "./home/TopCrypto.tsx";
 import TopNews from "./home/TopNews.tsx";
+import Footer from "../Footer.tsx";
 // Custom Motion Components
 import FadeInOut from "../motionAnimations/PageFadeInOut.tsx";
 function Home() {
@@ -21,6 +22,9 @@ function Home() {
           <GlobalStats />
           <TopCrypto />
           <TopNews />
+        </Box>
+        <Box component="div" sx={{ flexGrow: 1 }}>
+          <Footer />
         </Box>
       </FadeInOut>
     </Box>
