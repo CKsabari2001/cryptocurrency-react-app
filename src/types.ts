@@ -30,6 +30,7 @@ export interface GlobalStatsCardProps {
 export interface TypographyProps {
   text: string;
   isFetching: boolean;
+  link?: string;
   index?: number;
 }
 

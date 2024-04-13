@@ -30,7 +30,7 @@ function TopCrypto() {
           <TypographyH2 text={"Top 10 Cryptos in the World"} isFetching={limitedCryptosDataIsFetching} />
         </Grid>
         <Grid item>
-          <ViewMore text={"View More"} isFetching={limitedCryptosDataIsFetching} />
+          <ViewMore text={"View More"} isFetching={limitedCryptosDataIsFetching} link={"/cryptocurrencies"} />
         </Grid>
       </Grid>
       <CryptoLists data={cryptoCoins} isFetching={limitedCryptosDataIsFetching} isHomePage />

@@ -41,7 +41,7 @@ function TopNews() {
         </Grid>
         <Grid item>
           <RevealOnViewRight>
-            <ViewMore text={"View More"} isFetching={cryptoNewsDataIsFetching} />
+            <ViewMore text={"View More"} isFetching={cryptoNewsDataIsFetching} link={"/news"} />
           </RevealOnViewRight>
         </Grid>
       </Grid>
