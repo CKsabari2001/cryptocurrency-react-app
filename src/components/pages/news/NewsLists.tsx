@@ -17,16 +17,16 @@ function NewsLists({ data, isFetching, isHomePage }: NewsListsProps) {
 
   const [NewsList, setNewsList] = useState(data);
 
-  useEffect(() => {
-    setNewsList(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setNewsList(data);
+  // }, [data]);
 
   // For Testing Purpose Local Data
-  // useEffect(() => {
-  //   fetch("/newsListData.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setNewsList(data.data));
-  // }, []);
+  useEffect(() => {
+    fetch("/newsListData.json")
+      .then((res) => res.json())
+      .then((data) => setNewsList(data.data));
+  }, []);
 
   if (isFetching) {
     return <NewsCardLoader />;
